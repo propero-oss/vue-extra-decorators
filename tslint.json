@@ -1,0 +1,37 @@
+{
+  "extends": ["tslint:recommended"],
+  "rules": {
+    "curly": [true, "as-needed"],
+    "quotemark": [true, "double"],
+    "max-line-length": [true, 140],
+    "await-promise": false,
+    "trailing-comma": false,
+    "arrow-return-shorthand": true,
+    "prefer-template": true,
+    "encoding": true,
+    "eofline": true,
+    "cyclomatic-complexity": [true, 100],
+    "no-this-assignment": false,
+    "prefer-object-spread": true,
+    "no-empty-interface": false,
+    "no-empty": false,
+    "interface-name": false,
+    "no-consecutive-blank-lines": false,
+    "unified-signatures": false,
+    "ordered-imports": false,
+    "only-arrow-functions": false,
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "no-shadowed-variable": false,
+    "object-literal-sort-keys": false,
+    "array-type": [true, "array"],
+    "interface-over-type-literal": false
+  },
+  "linterOptions": {
+    "exclude": [
+      "dist/**/*",
+      "lib/**/*",
+      "test/**/*",
+      "**/_*"
+    ]
+  }
+}

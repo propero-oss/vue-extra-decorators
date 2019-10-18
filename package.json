@@ -1,0 +1,58 @@
+{
+  "name": "@propero/ts-library-template",
+  "version": "0.0.0",
+  "description": "TS Library Template Project",
+  "main": "dist/main.cjs.js",
+  "module": "dist/main.esm.js",
+  "types": "dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run build:ts && npm run build:types && npm run build:bundle",
+    "build:ts": "ttsc -p .",
+    "build:types": "dts-bundle-generator -o dist/main.d.ts lib/index.d.ts",
+    "build:bundle": "node build/build.js",
+    "lint": "tslint -p tsconfig.json",
+    "lint:fix": "tslint --fix -p tsconfig.json",
+    "clean": "rimraf lib dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "meta": "npm run meta:authors && npm run meta:changelog",
+    "meta:authors": "ngm authors --md --out AUTHORS.md",
+    "meta:changelog": "ngm changelog --ignore changelog --ignore authors --md --out CHANGELOG.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/propero-oss/ts-library-template.git"
+  },
+  "keywords": [
+    "typescript",
+    "ts",
+    "library",
+    "template",
+    "project"
+  ],
+  "author": "Propero Team <team@propero.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/propero-oss/ts-library-template/issues"
+  },
+  "homepage": "https://github.com/propero-oss/ts-library-template#readme",
+  "devDependencies": {
+    "@propero/ngm": "^1.2.3",
+    "@types/jasmine": "^3.4.4",
+    "acorn": "^7.1.0",
+    "chalk": "^2.4.2",
+    "dotenv-flow": "^3.1.0",
+    "dts-bundle-generator": "^3.2.0",
+    "jasmine": "^3.5.0",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.25.0",
+    "tslint": "^5.20.0",
+    "ttypescript": "^1.5.7",
+    "typescript": "^3.6.4",
+    "typescript-transform-paths": "^1.1.11",
+    "uglify-js": "^3.6.2"
+  }
+}
