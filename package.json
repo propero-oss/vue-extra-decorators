@@ -1,7 +1,7 @@
 {
-  "name": "@propero/ts-library-template",
+  "name": "@propero/vue-extra-decorators",
   "version": "0.0.0",
-  "description": "TS Library Template Project",
+  "description": "Additional decorators built on vue-class-component",
   "main": "dist/main.cjs.js",
   "module": "dist/main.esm.js",
   "types": "dist/main.d.ts",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/propero-oss/ts-library-template.git"
+    "url": "git+https://github.com/propero-oss/vue-extra-decorators.git"
   },
   "keywords": [
     "typescript",
