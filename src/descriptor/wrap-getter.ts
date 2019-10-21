@@ -1,4 +1,4 @@
-import {wrap, WrapperFunction} from "@/function";
+import {wrap, WrapperFunction} from "@/function/index";
 
 export function wrapGetter<T, C = any, GETTER extends (this: C) => T = (this: C) => T>(
   desc: TypedPropertyDescriptor<T>, wrapper: WrapperFunction<GETTER>

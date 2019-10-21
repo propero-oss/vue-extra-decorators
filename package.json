@@ -1,6 +1,6 @@
 {
   "name": "@propero/vue-extra-decorators",
-  "version": "0.0.0",
+  "version": "0.0.10",
   "description": "Additional decorators built on vue-class-component",
   "main": "dist/main.cjs.js",
   "module": "dist/main.esm.js",
@@ -9,13 +9,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "npm run build:ts && npm run build:types && npm run build:bundle",
-    "build:ts": "ttsc -p .",
-    "build:types": "dts-bundle-generator -o dist/main.d.ts lib/index.d.ts",
-    "build:bundle": "node build/build.js",
+    "build": "gulp build",
     "lint": "tslint -p tsconfig.json",
     "lint:fix": "tslint --fix -p tsconfig.json",
-    "clean": "rimraf lib dist",
+    "clean": "gulp clean",
     "test": "echo \"Error: no test specified\" && exit 1",
     "meta": "npm run meta:authors && npm run meta:changelog",
     "meta:authors": "ngm authors --md --out AUTHORS.md",
@@ -40,19 +37,22 @@
   "homepage": "https://github.com/propero-oss/ts-library-template#readme",
   "devDependencies": {
     "@propero/ngm": "^1.2.3",
-    "@types/jasmine": "^3.4.4",
-    "acorn": "^7.1.0",
-    "chalk": "^2.4.2",
-    "dotenv-flow": "^3.1.0",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@types/gulp": "^4.0.6",
+    "@types/node": "^12.11.2",
     "dts-bundle-generator": "^3.2.0",
-    "jasmine": "^3.5.0",
-    "reflect-metadata": "^0.1.13",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
+    "gulp-shell": "^0.7.1",
     "rimraf": "^3.0.0",
-    "rollup": "^1.25.0",
-    "tslint": "^5.20.0",
+    "rollup": "^1.25.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "rollup-plugin-uglify": "^6.0.3",
+    "ts-node": "^8.4.1",
     "ttypescript": "^1.5.7",
     "typescript": "^3.6.4",
-    "typescript-transform-paths": "^1.1.11",
-    "uglify-js": "^3.6.2"
+    "typescript-transform-paths": "^1.1.11"
   }
 }
