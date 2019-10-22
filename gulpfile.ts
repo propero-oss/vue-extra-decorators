@@ -56,7 +56,7 @@ const rollupInput = {
     nodeResolve(),
     sourcemaps(),
   ],
-  onwarn: (...args: any[]) => !/Non-existent export/.test(args[0]) && console.warn(...args),
+  onwarn: (...args: any[]) => {},
 };
 const rollupOutput = {
   exports: "named",

@@ -1,5 +1,5 @@
-import {createElementHandler} from "@/decorator/listener/create-element-handler";
-import {createVueHandler} from "@/decorator/listener/create-vue-handler";
+import {createElementHandler} from "@/vue/create-element-handler";
+import {createVueHandler} from "@/vue/create-vue-handler";
 import {append} from "@/function";
 import {createDecorator} from "vue-class-component";
 
