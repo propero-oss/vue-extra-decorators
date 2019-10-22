@@ -1,12 +1,5 @@
-import {createDecorator} from "vue-class-component";
-import {append} from "@/function";
-import {createElementHandler} from "@/decorator/listener/create-element-handler";
+import {createListenerDecorator} from "@/decorator/listener/create-listener-decorator";
 
 export function OnWindow(...events: string[]) {
-  return createDecorator((options, key) => {
-    const {on, off} = createElementHandler(events, () => window, key);
-    options.created = append(options.created!, on);
-    options.destroyed = append(options.destroyed!, off);
-    return options;
-  });
+  return createListenerDecorator(events, () => window, true);
 }
