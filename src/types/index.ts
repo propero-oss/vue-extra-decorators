@@ -1,1 +1,2 @@
-export * from "@/types/functions";
+export * from "./functions";
+export * from "./descriptors";

@@ -1,3 +1,4 @@
-export * from "@/types/index";
-export * from "@/function/index";
-export * from "@/descriptor/index";
+export * from "@/types";
+export * from "@/function";
+export * from "@/descriptor";
+export * from "@/decorator";

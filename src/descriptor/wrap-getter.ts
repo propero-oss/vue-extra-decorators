@@ -1,10 +1,9 @@
-import {wrap, WrapperFunction} from "@/function/index";
+import {convertToCalculated} from "@/descriptor/convert-to-calculated";
+import {GetWrapper} from "@/types";
 
-export function wrapGetter<T, C = any, GETTER extends (this: C) => T = (this: C) => T>(
-  desc: TypedPropertyDescriptor<T>, wrapper: WrapperFunction<GETTER>
-) {
-  const {get, value} = desc;
-  const getter = (get ? get : () => value!) as GETTER;
-  desc.get = wrap(getter, wrapper);
-  delete desc.value;
+export function wrapGetter<T, C = any>(desc: TypedPropertyDescriptor<T>, wrapper: GetWrapper<T, any, C>) {
+  if ("value" in desc) convertToCalculated(desc);
+  const {get} = desc;
+  desc.get = function(this: C) { return wrapper.call(this, get!.bind(this)); };
+  return desc;
 }

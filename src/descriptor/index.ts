@@ -1,3 +1,4 @@
-export * from "@/descriptor/wrap-function";
-export * from "@/descriptor/wrap-getter";
-export * from "@/descriptor/wrap-setter";
+export * from "./convert-to-calculated";
+export * from "./wrap-function";
+export * from "./wrap-getter";
+export * from "./wrap-setter";

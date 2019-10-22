@@ -4,8 +4,8 @@ import {TFunction} from "@/types";
 
 
 
-export function transformParams<T extends TFunction>(fn: T, ext: ParamsTransformFunction<T>): ExtendedFunction<T> {
+export function transformParams<T extends TFunction>(fn: T | undefined, ext: ParamsTransformFunction<T>): ExtendedFunction<T> {
   const efn = extend(fn);
-  efn.__params.push(fn);
+  efn.__params.push(ext);
   return efn;
 }

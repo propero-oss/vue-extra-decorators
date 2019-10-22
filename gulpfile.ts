@@ -6,11 +6,13 @@ const rollup = require("rollup");
 const {uglify} = require("rollup-plugin-uglify");
 const babel = require("rollup-plugin-babel");
 const sourcemaps = require("rollup-plugin-sourcemaps");
+const nodeResolve = require("rollup-plugin-node-resolve");
 const pkg = require("./package.json");
 const path = require("path");
 
 const camelish = (str: string) => str.replace(/[-_@\/]+([A-Za-z])/g, (_, x) => x.toUpperCase());
 const pascal   = (str: string) => { const cam = camelish(str); return cam[0].toUpperCase() + cam.substr(1); };
+const camel    = (str: string) => { const cam = camelish(str); return cam[0].toLowerCase() + cam.substr(1); };
 
 const dirs = {
   entryTs: "src",
@@ -31,6 +33,9 @@ const files = {
 };
 Object.entries(files).forEach(([name, file]) => (files as any)[name] = path.resolve(__dirname, file));
 
+const externals = Object.keys(pkg.dependencies || {}).concat("vue");
+const globals = externals.reduce((all, name) => Object.assign(all, {[name]: camel(name)}), {});
+
 const banner = `/**
  * {name} v{version}
  * {description}
@@ -46,23 +51,27 @@ const banner = `/**
 
 const rollupInput = {
   input: files.entryJs,
-  external: Object.keys(pkg.dependencies || {}),
+  external: externals,
   plugins: [
-    sourcemaps()
+    nodeResolve(),
+    sourcemaps(),
   ],
   onwarn: (...args: any[]) => !/Non-existent export/.test(args[0]) && console.warn(...args),
 };
 const rollupOutput = {
   exports: "named",
   name: pascal(pkg.name),
-  globals: {},
+  globals,
   sourcemap: true,
   banner,
 };
 
-const rollupTask = (output = {}, input = {}) => {
+const rollupTask = (output = {}, input: any = {}) => {
   return async () => {
-    const bundle = await rollup.rollup({...rollupInput, ...input});
+    input = Object.assign({}, rollupInput, input);
+    if (input.plugins !== rollupInput.plugins)
+      input.plugins.unshift(...rollupInput.plugins);
+    const bundle = await rollup.rollup(input);
     return bundle.write({...rollupOutput, ...output});
   };
 };
@@ -78,7 +87,7 @@ task("clean", series(
 
 
 task("build:typescript", shell.task("ttsc -p ./"));
-task("build:declaration", shell.task(`dts-bundle-generator -o ${files.outputDts} ${files.entryDts}`));
+task("build:declaration", shell.task(`api-extractor run --local`));
 task("build:cjs", rollupTask({ format: "cjs", file: files.outputCjs }));
 task("build:esm", rollupTask({ format: "esm", file: files.outputEsm }));
 task("build:umd", rollupTask({ format: "umd", file: files.outputUmd }, { plugins: [sourcemaps(), babel({ presets: ["@babel/env"] })] }));
