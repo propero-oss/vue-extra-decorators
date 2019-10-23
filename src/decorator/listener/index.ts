@@ -1,4 +1,3 @@
-export * from "./create-listener-decorator";
 export * from "./on";
 export * from "./on-document";
 export * from "./on-element";
