@@ -9,5 +9,5 @@ export function isInPath(...refs: string[]) {
     const resolvedRefs = refs.map(ref => this.$refs[ref]) as any[];
     const path = ev.composedPath();
     return !resolvedRefs.find(ref => path.indexOf(ref.$el || ref) === -1);
-  }
+  };
 }

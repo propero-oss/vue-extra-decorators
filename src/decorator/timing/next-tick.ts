@@ -6,5 +6,5 @@ export function NextTick() {
     wrapFunction(desc, function({args, orig}) {
       return this.$nextTick().then(() => orig.apply(this, args));
     });
-  }
+  };
 }

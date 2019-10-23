@@ -9,5 +9,5 @@ export function NextMs() {
     wrapFunction(desc, function({args, orig}) {
       return callbackToPromise(setTimeout, orig.bind(this, ...args), 0);
     });
-  }
+  };
 }

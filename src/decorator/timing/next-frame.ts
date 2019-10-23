@@ -7,5 +7,5 @@ export function NextFrame() {
     wrapFunction(desc, function({args, orig}) {
       return callbackToPromise(requestAnimationFrame, orig.bind(this, ...args));
     });
-  }
+  };
 }

@@ -2,7 +2,8 @@ import {extend} from "@/function/extend";
 import {ExtendedFunction} from "@/function/extended-function";
 import {TFunction} from "@/types";
 
-export type WrapperFunction<T extends TFunction = any, THIS extends ThisParameterType<T> = any> = TFunction<ReturnType<T>, [{args: Parameters<T>, orig: T}], THIS>;
+export type WrapperFunction<T extends TFunction = any, THIS extends ThisParameterType<T> = any>
+  = TFunction<ReturnType<T>, [{args: Parameters<T>, orig: T}], THIS>;
 
 
 export function wrap<T extends TFunction>(fn: T | undefined, ext: WrapperFunction<T>): ExtendedFunction<T> {

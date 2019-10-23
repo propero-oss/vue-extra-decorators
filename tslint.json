@@ -24,7 +24,8 @@
     "no-shadowed-variable": false,
     "object-literal-sort-keys": false,
     "array-type": [true, "array"],
-    "interface-over-type-literal": false
+    "interface-over-type-literal": false,
+    "no-bitwise": false
   },
   "linterOptions": {
     "exclude": [
