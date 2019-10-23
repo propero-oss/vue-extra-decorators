@@ -1,5 +1,9 @@
 ## Changelog
 
+### v0.2.0
+- feat: add css class converter decorators [[fac2cd]](0d7d2eeb961501727e37a1d765b9951fddfac2cd)
+- v0.1.0 [[b305ff]](3302024d831a25228324f70d15c993a944b305ff)
+
 ### v0.1.0
 - feat: add several conditions for conditional decorators [[06b60f]](2c2c21de83e914e1f96415d3cbcb3c31ae06b60f)
 - chore: move create listener decorator helper to vue dir [[afd04d]](0a33793925dba66562e2d318a106c58174afd04d)
@@ -13,4 +17,4 @@
 - function and descriptor util [[bac080]](1695b8b38c3b2290851581613cef0ba3f4bac080)
 - Initial commit [[7821b0]](e2cfffe21a09fa25d43551edf90f4a0add7821b0)
 
-###### Generated on 2019-10-23T22:43:37.425Z | Made with @propero/ngm
+###### Generated on 2019-10-23T23:49:39.237Z | Made with @propero/ngm
