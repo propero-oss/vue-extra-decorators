@@ -18,7 +18,7 @@ export function extend<T extends () => unknown>(fn?: T): ExtendedFunction<T> & T
   def(ext, "__after", []);
   def(ext, "__before", []);
   def(ext, "__params", []);
-  def(ext, "__return", []);
+  def(ext, "__result", []);
   def(ext, "__orig", fn || (() => undefined));
   def(ext, "__extend", true);
 
