@@ -1,12 +1,12 @@
-import {wrapGetter} from "@/descriptor";
-import {TFunction} from "@/types";
+import {CalculatedPropertyDescriptor, wrapGetter} from "@/descriptor";
+import {ClassesGetter, TFunction} from "@/types";
 
 export function Classes(
   prefix?: string,
   infix: string = "",
   converter: TFunction<string, [string, boolean]> = s => s
 ) {
-  return (target: any, key: string, desc: TypedPropertyDescriptor<Record<string, boolean>>) => {
+  return <T>(target: any, key: string, desc: CalculatedPropertyDescriptor<ClassesGetter<T>>) => {
     if (prefix == null) prefix = converter(target.name, false);
     wrapGetter(desc, function(orig) {
       const val = orig();
