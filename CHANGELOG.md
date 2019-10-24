@@ -1,5 +1,8 @@
 ## Changelog
 
+### v0.2.3
+- fix(typings): return type of classes decorators [[e1d6f4]](8b54d14ae09a82571988c586f211d7807de1d6f4)
+
 ### v0.2.2
 - fix: typing for classes decorator [[8a33b1]](1e0d1779debf100442f559a60c963543a48a33b1)
 
@@ -23,4 +26,4 @@
 - function and descriptor util [[bac080]](1695b8b38c3b2290851581613cef0ba3f4bac080)
 - Initial commit [[7821b0]](e2cfffe21a09fa25d43551edf90f4a0add7821b0)
 
-###### Generated on 2019-10-24T08:35:47.076Z | Made with @propero/ngm
+###### Generated on 2019-10-24T08:50:18.865Z | Made with @propero/ngm
