@@ -1,5 +1,8 @@
 ## Changelog
 
+### v0.2.5
+- fix(listener): OnElement should use dom handlers [[e32686]](3d2688c019de7b60e293547ef41205f1d9e32686)
+
 ### v0.2.4
 - fix: extended function creation error [[78668e]](3a391de74d5b2606c6f3da9e5926a0e84578668e)
 
@@ -29,4 +32,4 @@
 - function and descriptor util [[bac080]](1695b8b38c3b2290851581613cef0ba3f4bac080)
 - Initial commit [[7821b0]](e2cfffe21a09fa25d43551edf90f4a0add7821b0)
 
-###### Generated on 2019-10-24T10:30:46.372Z | Made with @propero/ngm
+###### Generated on 2019-10-24T10:40:51.775Z | Made with @propero/ngm
