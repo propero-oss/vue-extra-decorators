@@ -1,3 +1,3 @@
-export * from "src/conditions/events/event/key-matches";
-export * from "src/conditions/events/event/mouse-button-matches";
-export * from "src/conditions/events/event/was-prevented";
+export * from "./key-matches";
+export * from "./mouse-button-matches";
+export * from "./was-prevented";
