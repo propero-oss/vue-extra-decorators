@@ -1,5 +1,8 @@
 ## Changelog
 
+### v0.2.2
+- fix: typing for classes decorator [[8a33b1]](1e0d1779debf100442f559a60c963543a48a33b1)
+
 ### v0.2.1
 - fix: index files and typings [[fb9d93]](6296b64a93dc1f1957a526abb90ca25c46fb9d93)
 
@@ -20,4 +23,4 @@
 - function and descriptor util [[bac080]](1695b8b38c3b2290851581613cef0ba3f4bac080)
 - Initial commit [[7821b0]](e2cfffe21a09fa25d43551edf90f4a0add7821b0)
 
-###### Generated on 2019-10-24T08:12:38.548Z | Made with @propero/ngm
+###### Generated on 2019-10-24T08:35:47.076Z | Made with @propero/ngm
