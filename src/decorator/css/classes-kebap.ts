@@ -3,6 +3,6 @@ import {pascalToKebap} from "@/util";
 
 
 
-export function ClassesKebap(prefix?: string, infix?: string) {
+export function ClassesKebap(prefix?: string, infix?: string): ReturnType<typeof Classes> {
   return Classes(prefix, infix, pascalToKebap);
 }

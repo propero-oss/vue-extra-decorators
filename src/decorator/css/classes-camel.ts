@@ -5,6 +5,6 @@ import {camelToPascal, pascalToCamel} from "@/util";
 
 const converter = composeConverter(pascalToCamel, camelToPascal);
 
-export function ClassesCamel(prefix?: string, infix?: string) {
+export function ClassesCamel(prefix?: string, infix?: string): ReturnType<typeof Classes> {
   return Classes(prefix, infix, name => name.replace(/^[A-Z]+/, converter));
 }
