@@ -1,5 +1,8 @@
 ## Changelog
 
+### v0.2.1
+- fix: index files and typings [[fb9d93]](6296b64a93dc1f1957a526abb90ca25c46fb9d93)
+
 ### v0.2.0
 - feat: add css class converter decorators [[fac2cd]](0d7d2eeb961501727e37a1d765b9951fddfac2cd)
 - v0.1.0 [[b305ff]](3302024d831a25228324f70d15c993a944b305ff)
@@ -17,4 +20,4 @@
 - function and descriptor util [[bac080]](1695b8b38c3b2290851581613cef0ba3f4bac080)
 - Initial commit [[7821b0]](e2cfffe21a09fa25d43551edf90f4a0add7821b0)
 
-###### Generated on 2019-10-23T23:49:39.237Z | Made with @propero/ngm
+###### Generated on 2019-10-24T08:12:38.548Z | Made with @propero/ngm
