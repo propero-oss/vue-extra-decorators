@@ -1,5 +1,5 @@
-export * from "./debounce";
 export * from "./debuffer";
+export * from "./debounce";
 export * from "./delay";
 export * from "./every";
 export * from "./every-frame";
