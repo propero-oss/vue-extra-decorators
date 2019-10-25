@@ -1,5 +1,8 @@
 ## Changelog
 
+### v1.0.0
+- fix!: swap debounce and debuffer [[ea7429]](0df6eb3eade1e7643bffe8e182a4685402ea7429)
+
 ### v0.2.6
 - fix(condition): invert IfNot filter logic [[94991a]](4529ad9b80075e1dcabc69fe3a2a96fd7994991a)
 
@@ -35,4 +38,4 @@
 - function and descriptor util [[bac080]](1695b8b38c3b2290851581613cef0ba3f4bac080)
 - Initial commit [[7821b0]](e2cfffe21a09fa25d43551edf90f4a0add7821b0)
 
-###### Generated on 2019-10-24T10:53:01.003Z | Made with @propero/ngm
+###### Generated on 2019-10-25T12:16:10.418Z | Made with @propero/ngm
