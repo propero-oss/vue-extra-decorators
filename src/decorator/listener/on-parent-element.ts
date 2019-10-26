@@ -24,6 +24,6 @@ import {createListenerDecorator} from "@/vue";
  * {@Link On} {@Link OnElement} {@Link OnDocument} {@Link OnWindow} {@Link OnParent} {@Link OnParentElement}
  * @public
  */
-export function OnElementParent(...events: string[]) {
+export function OnParentElement(...events: string[]) {
   return createListenerDecorator(events, el => el.$parent.$el, true, ["mouted", "updated"], ["destroyed", "beforeUpdate"]);
 }
