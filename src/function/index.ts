@@ -1,5 +1,6 @@
 export * from "./extended-function";
 export * from "./is-extended";
+export * from "./merge-result";
 export * from "./extend";
 export * from "./append";
 export * from "./prepend";
