@@ -12,11 +12,11 @@ export function Classes(
       const val = orig();
       const result: Record<string, boolean> = {};
       if (prefix) result[prefix] = true;
-      for (let [key, value] of Object.entries(val))
+      for (const [key, value] of Object.entries(val))
         result[prefix + infix + converter(key, true)] = value;
       return result;
     });
-  }
+  };
 }
 
 export function composeConverter(className: TFunction<string, [string]>, memberName: TFunction<string, [string]>) {

@@ -102,5 +102,8 @@ task("build", series(
   task("clean:typescript")
 ));
 
+task("lint", shell.task("tslint -p tsconfig.json"));
+task("lint:fix", shell.task("tslint -p tsconfig.json --fix"));
+
 
 task("default", task("build"));

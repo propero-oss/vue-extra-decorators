@@ -14,6 +14,7 @@ export function mergeResult<T extends TFunction>(orig: T | undefined, extension:
       return [...(result as any || []), ...val];
     if (typeof val === "function")
       return mergeResult(result, val);
+    // tslint:disable-next-line:prefer-object-spread
     return Object.assign(result, val);
   }) as any;
 }

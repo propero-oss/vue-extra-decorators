@@ -8,5 +8,6 @@ export function extendOptionMember<T, K extends keyof T>(options: T, member: K, 
     return options[member] = [...(options[member] as any || []), ...val] as any;
   if (typeof val === "function")
     return options[member] = mergeResult(options[member] as any, val);
+  // tslint:disable-next-line:prefer-object-spread
   return Object.assign(options[member] || {}, val);
 }
