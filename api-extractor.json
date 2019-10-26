@@ -3,9 +3,9 @@
   "projectFolder": ".",
   "mainEntryPointFilePath": "<projectFolder>/lib/index.d.ts",
   "bundledPackages": [],
-  "compiler": { "tsconfigFilePath": "<projectFolder>/tsconfig.json" },
+  "compiler":      { "tsconfigFilePath": "<projectFolder>/tsconfig.json" },
   "dtsRollup":     { "enabled": true, "untrimmedFilePath": "<projectFolder>/dist/main.d.ts" },
-  "apiReport":     { "enabled": false },
+  "apiReport":     { "enabled": true, "reportFileName":    "main.api.md", "reportFolder": "<projectFolder>/dist" },
   "docModel":      { "enabled": false },
   "tsdocMetadata": { "enabled": false },
   "messages": {

@@ -18,6 +18,7 @@ const dirs = {
   entryTs: "src",
   entryJs: "lib",
   output:  "dist",
+  temp:    "temp",
 };
 Object.entries(dirs).forEach(([name, file]) => (dirs as any)[name] = path.resolve(__dirname, file));
 
@@ -79,9 +80,11 @@ const rollupTask = (output = {}, input: any = {}) => {
 
 
 task("clean:typescript", (cb: CB) => require("rimraf")(dirs.entryJs, cb));
+task("clean:declaration", (cb: CB) => require("rimraf")(dirs.temp, cb));
 task("clean:bundle", (cb: CB) => require("rimraf")(dirs.output, cb));
 task("clean", series(
   task("clean:typescript"),
+  task("clean:declaration"),
   task("clean:bundle")
 ));
 
@@ -99,7 +102,8 @@ task("build", series(
   task("build:esm"),
   task("build:umd"),
   task("build:min"),
-  task("clean:typescript")
+  task("clean:typescript"),
+  task("clean:declaration"),
 ));
 
 task("lint", shell.task("tslint -p tsconfig.json"));
