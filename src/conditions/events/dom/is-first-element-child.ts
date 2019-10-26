@@ -3,7 +3,7 @@
  * is the first child element of its parent element.
  *
  * @param ev - The event to check against
- * @return true, if the event's target is the first child of its parent.
+ * @returns true, if the event's target is the first child of its parent.
  *
  * @remarks
  * This function is meant to be a condition for
