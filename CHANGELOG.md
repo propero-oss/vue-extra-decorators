@@ -1,5 +1,10 @@
 ## Changelog
 
+### v1.1.0
+- chore: add linter, resolve linter issues [[30d7e4]](780df250d5296b1b03082f8b814d4bbadc30d7e4)
+- feat: re-export vue-class-component for convenience [[0e0121]](60529824ccce0747943e6e75766c76ff4f0e0121)
+- feat: add prop decorator, flavors, typings [[d7f352]](da94336d4372006a6ec4497a60d069f3bad7f352)
+
 ### v1.0.0
 - fix!: swap debounce and debuffer [[ea7429]](0df6eb3eade1e7643bffe8e182a4685402ea7429)
 
@@ -38,4 +43,4 @@
 - function and descriptor util [[bac080]](1695b8b38c3b2290851581613cef0ba3f4bac080)
 - Initial commit [[7821b0]](e2cfffe21a09fa25d43551edf90f4a0add7821b0)
 
-###### Generated on 2019-10-25T12:16:10.418Z | Made with @propero/ngm
+###### Generated on 2019-10-26T03:33:02.042Z | Made with @propero/ngm
