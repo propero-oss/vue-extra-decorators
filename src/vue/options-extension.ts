@@ -6,6 +6,11 @@ import {Vue} from "vue/types/vue";
 
 
 
+/**
+ * Creates a vue decorator extending vue component options by the result of a factory function.
+ * @param members - The factory function constructing the properties to merge.
+ * @internal
+ */
 export function optionsExtension<P = any, T extends ComponentOptions<Vue> = ComponentOptions<Vue>>(
   members: (key: string, options: T, type: any) => Partial<T>
 ): TypedVueDecorator<P> {

@@ -1,5 +1,14 @@
 
 
+
+/**
+ * gets or creates a member of vue component options
+ * @param options - The vue component options to modify
+ * @param member - The member name
+ * @param defaultVal - The default value should no member exist.
+ * @returns the value
+ * @internal
+ */
 export function ensureOptionMember<T, K extends keyof T>(
   options: T,
   member: K,

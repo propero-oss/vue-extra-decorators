@@ -1,4 +1,15 @@
 
+
+
+
+/**
+ * Create functions for attaching and detaching a dom event handler
+ * @param events - The events to listen for
+ * @param el - A function resolving the element to attach to.
+ * @param key - The name of the event handler function
+ * @returns functions to attach and detach event handlers.
+ * @internal
+ */
 export function createElementHandler(events: string[], el: (cxt: any) => EventTarget, key: string) {
   const bound = Symbol(`bound:${key}`);
   return {

@@ -4,6 +4,13 @@ import {Vue} from "vue/types/vue";
 
 
 
+/**
+ * Normalizes a string / partial {@link RouteConfig} / class name into a {@link RouteConfig}
+ * @param it - The config to normalize
+ * @param target - The class that is the configs component.
+ * @returns the normalized config.
+ * @internal
+ */
 export function normalizeRoute(it: Partial<RouteConfig> | string | undefined, target: VueClass<Vue>): RouteConfig {
   // No route => assume class name
   if (it == null) it = {
