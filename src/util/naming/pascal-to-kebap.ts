@@ -1,6 +1,12 @@
 
 
 
+/**
+ * Converts a camelCased name to kebap-case.
+ * @param str - The string to convert
+ * @returns The converted string.
+ * @internal
+ */
 export function pascalToKebap(str: string): string {
   // @ts-ignore
   return str
