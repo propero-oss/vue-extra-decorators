@@ -12,7 +12,7 @@
  * its parent, use {@link isLastChild} instead.
  *
  *
- * Example:
+ * @example
  * ```TS
  *   @If(isLastElementChild)
  *   private doSomething(ev: Event) {

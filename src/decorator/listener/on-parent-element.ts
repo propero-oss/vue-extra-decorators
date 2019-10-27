@@ -13,7 +13,7 @@ import {createListenerDecorator} from "@/vue";
  * This decorator doesn't work for dom events, only for dom events.
  * If you want to attach to vue events, use {@link OnParent} instead.
  *
- * Example:
+ * @example
  * ```TS
  *   @OnParentElement("click")
  *   private onToggleFade(ev: MouseEvent) {

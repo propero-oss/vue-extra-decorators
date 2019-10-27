@@ -21,7 +21,7 @@ const converter = composeConverter(pascalToCamel, camelToPascal);
  * There are various favors of this decorator preconfigured for certain styles:
  * {@link ClassesCamel} {@link ClassesKebap} {@link ClassesPascal} {@link ClassesSnake}
  *
- * Example:
+ * @example
  * ```TS
  * const lower = (str: string) => str.toLowerCase();
  * @Component({ template: `<div :class="classes">Hello World</div>` })

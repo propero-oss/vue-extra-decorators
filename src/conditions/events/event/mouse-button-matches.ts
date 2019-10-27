@@ -13,7 +13,7 @@ import {mouseButtonsToMask} from "@/util/mouse-buttons-to-mask";
  * This function is meant to be a condition for
  * {@link If} alike methods.
  *
- * Example:
+ * @example
  * ```TS
  *   @If(mouseButtonMatches("LEFT", "MIDDLE"))
  *   private doSomething(ev: MouseEvent) {

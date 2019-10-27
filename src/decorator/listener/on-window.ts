@@ -12,7 +12,7 @@ import {createListenerDecorator} from "@/vue/handler/create-listener-decorator";
  * @remarks
  * If you want to attach to document, use {@link OnDocument} instead.
  *
- * Example:
+ * @example
  * ```TS
  *   @OnWindow("resize")
  *   private onToggleFade(ev: Event) {

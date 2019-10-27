@@ -9,7 +9,7 @@
  * This function is meant to be a condition for
  * {@link If} alike methods.
  *
- * Example:
+ * @example
  * ```TS
  *   @If(keyMatches("Enter", "ArrowUp", "A"))
  *   private doSomething(ev: KeyboardEvent) {

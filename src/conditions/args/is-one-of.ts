@@ -17,7 +17,7 @@ import {lookup} from "@/util";
  * If you only want to check against a single value,
  * use {@link isEqual} instead.
  *
- * Example:
+ * @example
  * ```TS
  *   @If(isOneOf("foo.bar", "baz", "qux"))
  *   private doSomething(foo: any) {

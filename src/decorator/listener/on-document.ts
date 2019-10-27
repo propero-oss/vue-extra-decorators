@@ -12,7 +12,7 @@ import {createListenerDecorator} from "@/vue/handler/create-listener-decorator";
  * @remarks
  * If you want to attach to window, use {@link OnWindow} instead.
  *
- * Example:
+ * @example
  * ```TS
  *   @OnDocument("click")
  *   private onToggleFade(ev: MouseEvent) {

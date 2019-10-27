@@ -9,7 +9,7 @@
  * This function is meant to be a condition for
  * {@link If} alike methods.
  *
- * Example:
+ * @example
  * ```TS
  *   @IfNot(wasPrevented)
  *   private doSomething(ev: Event) {

@@ -10,7 +10,7 @@ import {TFunction} from "@/types";
  * @remarks
  * This function is meant to be a condition for {@link If} alike methods.
  *
- * Example:
+ * @example
  * ```TS
  *   @If(and(isInPath("drawer"), not(wasPrevented)))
  *   private doSomething(ev: Event) {

@@ -18,7 +18,7 @@ import {lookup} from "@/util";
  * use {@link isOneOf} instead.
  *
  *
- * Example:
+ * @example
  * ```TS
  *   @If(isEqual("foo.bar", "baz"))
  *   private doSomething(foo: any) {

@@ -12,7 +12,7 @@
  * its parent, use {@link isFirstChild} instead.
  *
  *
- * Example:
+ * @example
  * ```TS
  *   @If(isFirstElementChild)
  *   private doSomething(ev: Event) {

@@ -13,7 +13,7 @@ import {Vue} from "vue/types/vue";
  * This function is meant to be a condition for {@link If} alike methods.
  * If you want to check if all match use {@link isInPath} instead.
  *
- * Example:
+ * @example
  * ```TS
  *   @If(isOneInPath("drawer", "navbar"))
  *   private doSomething(ev: Event) {

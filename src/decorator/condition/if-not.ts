@@ -9,7 +9,7 @@ import {TFunction} from "@/types";
  * @param fns - The predicates to check before executing the decorated function
  *
  * @remarks
- * Example:
+ * @example
  * ```TS
  *   @IfNot(wasPrevented)
  *   private doSomething(ev: Event) {
