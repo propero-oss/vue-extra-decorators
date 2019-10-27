@@ -2,6 +2,34 @@ import {TFunction} from "@/types";
 import {withSideEffects} from "@/vue/with-side-effects";
 
 
+
+/**
+ * Calls a function every animation frame.
+ *
+ *
+ * @remarks
+ * If you want to execute in a specific interval, use
+ * {@link Every} instead.
+ *
+ * @example
+ * ```TS
+ *   @EveryFrame()
+ *   render() {
+ *     // on every animation frame
+ *   }
+ * ```
+ *
+ * Call limiting decorators:
+ * {@link Debounce} {@link Debuffer} {@link LimitToFrames}
+ *
+ * Delaying decorators:
+ * {@link Delay} {@link NextFrame} {@link NextTick} {@link NextMs}
+ *
+ * Interval decorators:
+ * {@link Every} {@link EveryFrame}
+ *
+ * @public
+ */
 export function EveryFrame() {
   return (target: any, key: string, desc: TypedPropertyDescriptor<TFunction>) => {
     const id = Symbol(`frame:${key}`);
