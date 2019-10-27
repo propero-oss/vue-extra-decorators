@@ -19,18 +19,19 @@ const dirs = {
   entryJs: "lib",
   output:  "dist",
   temp:    "temp",
+  docs: "docs",
 };
 Object.entries(dirs).forEach(([name, file]) => (dirs as any)[name] = path.resolve(__dirname, file));
 
 const files = {
-  entryTs:   "src/index.ts",
-  entryDts:  "lib/index.d.ts",
-  entryJs:   "lib/index.js",
-  outputCjs: "dist/main.cjs.js",
-  outputUmd: "dist/main.js",
-  outputMin: "dist/main.min.js",
-  outputEsm: "dist/main.esm.js",
-  outputDts: "dist/main.d.ts",
+  entryTs:    "src/index.ts",
+  entryDts:   "lib/index.d.ts",
+  entryJs:    "lib/index.js",
+  outputCjs:  "dist/main.cjs.js",
+  outputUmd:  "dist/main.js",
+  outputMin:  "dist/main.min.js",
+  outputEsm:  "dist/main.esm.js",
+  outputDts:  "dist/main.d.ts",
 };
 Object.entries(files).forEach(([name, file]) => (files as any)[name] = path.resolve(__dirname, file));
 
@@ -77,20 +78,25 @@ const rollupTask = (output = {}, input: any = {}) => {
   };
 };
 
+const cleanTask = (dir: string) => (cb: CB) => require("rimraf")(dir, cb);
 
 
-task("clean:typescript", (cb: CB) => require("rimraf")(dirs.entryJs, cb));
-task("clean:declaration", (cb: CB) => require("rimraf")(dirs.temp, cb));
-task("clean:bundle", (cb: CB) => require("rimraf")(dirs.output, cb));
+
+task("clean:typescript",    cleanTask(dirs.entryJs));
+task("clean:declaration",   cleanTask(dirs.temp));
+task("clean:bundle",        cleanTask(dirs.output));
+task("clean:documentation", cleanTask(dirs.docs));
 task("clean", series(
   task("clean:typescript"),
   task("clean:declaration"),
-  task("clean:bundle")
+  task("clean:bundle"),
+  task("clean:documentation"),
 ));
 
 
 task("build:typescript", shell.task("ttsc -p ./"));
 task("build:declaration", shell.task(`api-extractor run --local`));
+task("build:documentation", shell.task(`api-documenter markdown -i "${dirs.output}" -o "${dirs.docs}"`));
 task("build:cjs", rollupTask({ format: "cjs", file: files.outputCjs }));
 task("build:esm", rollupTask({ format: "esm", file: files.outputEsm }));
 task("build:umd", rollupTask({ format: "umd", file: files.outputUmd }, { plugins: [sourcemaps(), babel({ presets: ["@babel/env"] })] }));
@@ -98,6 +104,7 @@ task("build:min", rollupTask({ format: "umd", file: files.outputMin }, { plugins
 task("build", series(
   task("build:typescript"),
   task("build:declaration"),
+  task("build:documentation"),
   task("build:cjs"),
   task("build:esm"),
   task("build:umd"),

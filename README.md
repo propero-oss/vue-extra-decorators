@@ -16,3 +16,6 @@
 ```SH
 npm i @propero/vue-extra-decorators
 ```
+
+### Documentation
+Documentation can be found inside the [docs](docs/vue-extra-decorators.md) folder.
