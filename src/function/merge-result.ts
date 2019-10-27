@@ -4,6 +4,21 @@ import {TFunction} from "@/types";
 
 
 
+/**
+ * Merges the return results of multiple functions.
+ * When the returned function is called, both, the original
+ * and the extension are called and then their results
+ * are merged.
+ * If the result is an object, the merged result will be a
+ * combined object of both results, with the extended results
+ * values overwriting the originals.
+ * If the result is an array, the merged result will be the
+ * first array, with the second one appended.
+ * @param orig - The function to extend
+ * @param extension - The result transformer
+ * @returns The transformed function
+ * @internal
+ */
 export function mergeResult<T extends TFunction>(orig: T | undefined, extension: T): T {
   if (!orig) return extend(extension);
   return transformResult(orig, ({args, result, context}) => {

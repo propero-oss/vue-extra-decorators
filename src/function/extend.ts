@@ -1,8 +1,18 @@
 import {ExtendedFunction} from "@/function/extended-function";
 
-const enumerable = false;
-const def = (it: any, name: string, value: any) => Object.defineProperty(it, name, {value, enumerable});
 
+const def = (it: any, name: string, value: any) => Object.defineProperty(it, name, {value, enumerable: false});
+
+
+/**
+ * Extends a function to become an {@link ExtendedFunction}.
+ * With extended functions you are able to modify params and
+ * results and add before and after handlers.
+ *
+ * @param fn - The function to extend
+ * @returns The extended function
+ * @internal
+ */
 export function extend<T extends () => unknown>(fn?: T): ExtendedFunction<T> & T {
   if (fn && "__extended" in fn) return fn as any;
 
