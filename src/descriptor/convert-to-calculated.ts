@@ -1,5 +1,11 @@
 
 
+
+/**
+ * convert a property with possible value into a get / set
+ * @param desc - The descriptor to transform
+ * @internal
+ */
 export function convertToCalculated(desc: PropertyDescriptor) {
   if (!("value" in desc)) return;
   const {value} = desc;
