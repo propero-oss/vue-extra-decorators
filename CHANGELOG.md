@@ -1,5 +1,32 @@
 ## Changelog
 
+### v1.1.1
+- fix(typing): fix decorator typing for @Prop [[71de71]](942ea35232a1be69d02f97f2a6f969391971de71)
+- chore: add code climate config [[e2db4f]](34b6a48adcda9b422e22ae0366d9058330e2db4f)
+- chore(docs): add documentation generation and markdown files [[9ad950]](ccbb1966351ca34f35882918516575bd179ad950)
+- chore(docs): add documentation generation and markdown files [[ef9b75]](c96cd5ce87ae05da7f8fe9ef7df89cd9ffef9b75)
+- chore(docs): document vue helper types [[4e2923]](62bcccec6c3541a1710242471472c1ce9b4e2923)
+- chore(docs): document utility functions [[e779c2]](c9be5acf351a7dfee5cdd205c7679d99efe779c2)
+- chore(docs): document helper types [[f2395d]](3aa254caca94c4e1788e9a7910016ebd63f2395d)
+- chore(docs): document function extensions [[bbc38a]](46a22d59c476606202cfde302d37b040e1bbc38a)
+- chore(docs): document descriptor functions [[7f377e]](68dcc86f7008f7a4da58dd3fa8d605e4cd7f377e)
+- feat: add typescript util for property existence [[f7f7bf]](d845c557667721627bf3572c24a8560764f7f7bf)
+- chore(docs): document timing decorators [[ccf7d0]](7f457bb6c31e240dfec62cf80cb23687c3ccf7d0)
+- chore: add badges to readme [[2bd35a]](5095c46791beac1c5e7414892b9a43e20c2bd35a)
+- chore(docs): document route decorators [[33764b]](98686f1acd1e49e8940a5ecfcab777346333764b)
+- chore(docs): use @example tags in documentation [[b964ba]](9b574f3d1a6a12670544cdb6a88f1e40e4b964ba)
+- chore(docs): document property decorators [[2f7f7c]](32dd25001ce3da8ba45ccd6dfb990dd54f2f7f7c)
+- fix: rename onelementparent to onparentelement [[117071]](c800d14410cb9f7a7b24a8b9b855dc676f117071)
+- chore(docs): document event listener decorators [[c69d67]](81202138ca43fa11404b30265549114201c69d67)
+- chore(docs): document css classes decorators [[dc03b5]](5d37518a4961c8c72999aaac341986d36edc03b5)
+- chore(docs): document conditional decorators [[114b2b]](2102f6eb67fd204b36b49cefb382817529114b2b)
+- chore(docs): document vue ref conditions [[3ff6e5]](bce2b9c71dbbc77d3b940ed5a97c07e82e3ff6e5)
+- chore(docs): document event conditions [[4c2dec]](c23027e657c6705c9ef41a1a901e39ae094c2dec)
+- chore(docs): document child selector conditions [[7aa377]](e95ec90ba21d5b2f0b5f473e4534108dd77aa377)
+- chore: generate api doc md files [[ba87c2]](ec0117f0bc82de087933cb2a33c5db351dba87c2)
+- chore(docs): document argument and dom order conditions [[468f69]](c7edd4174069dcddc98d9d8f86246199d0468f69)
+- feat: add default infixes for kebap and snake case classes [[4d90bb]](828ce24b45217141b8f8238cfb60cc32854d90bb)
+
 ### v1.1.0
 - chore: add linter, resolve linter issues [[30d7e4]](780df250d5296b1b03082f8b814d4bbadc30d7e4)
 - feat: re-export vue-class-component for convenience [[0e0121]](60529824ccce0747943e6e75766c76ff4f0e0121)
@@ -43,4 +70,4 @@
 - function and descriptor util [[bac080]](1695b8b38c3b2290851581613cef0ba3f4bac080)
 - Initial commit [[7821b0]](e2cfffe21a09fa25d43551edf90f4a0add7821b0)
 
-###### Generated on 2019-10-26T03:33:02.042Z | Made with @propero/ngm
+###### Generated on 2019-10-30T19:11:37.863Z | Made with @propero/ngm
