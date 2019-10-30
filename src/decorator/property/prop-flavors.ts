@@ -17,14 +17,6 @@ import {TypedVueDecorator} from "@/types";
  * types already available:
  * {@link SProp} {@link NProp} {@link DProp} {@link BProp}
  *
- * Additional Options:
- * `opts.default`   | {@link RecordPropOpts#default}
- * `opts.literal`   | {@link RecordPropOpts#literal}
- * `opts.required`  | {@link RecordPropOpts#required}
- * `opts.twoWay`    | {@link RecordPropOpts#twoWay}
- * `opts.validator` | {@link RecordPropOpts#validator}
- * `opts.model`     | {@link RecordPropOpts#model}
- *
  * @example
  * ```TS
  *   @SProp()                      private simpleString!: string;
@@ -53,14 +45,6 @@ export function SProp(opts?: PropOpts<string>): TypedVueDecorator<string> {
  * There are various preconfigured flavors of this decorator for different
  * types already available:
  * {@link SProp} {@link NProp} {@link DProp} {@link BProp}
- *
- * Additional Options:
- * `opts.default`   | {@link RecordPropOpts#default}
- * `opts.literal`   | {@link RecordPropOpts#literal}
- * `opts.required`  | {@link RecordPropOpts#required}
- * `opts.twoWay`    | {@link RecordPropOpts#twoWay}
- * `opts.validator` | {@link RecordPropOpts#validator}
- * `opts.model`     | {@link RecordPropOpts#model}
  *
  * @example
  * ```TS
@@ -91,14 +75,6 @@ export function NProp(opts?: PropOpts<number>): TypedVueDecorator<number> {
  * types already available:
  * {@link SProp} {@link NProp} {@link DProp} {@link BProp}
  *
- * Additional Options:
- * `opts.default`   | {@link RecordPropOpts#default}
- * `opts.literal`   | {@link RecordPropOpts#literal}
- * `opts.required`  | {@link RecordPropOpts#required}
- * `opts.twoWay`    | {@link RecordPropOpts#twoWay}
- * `opts.validator` | {@link RecordPropOpts#validator}
- * `opts.model`     | {@link RecordPropOpts#model}
- *
  * @example
  * ```TS
  *   @BProp()                  private simpleFlag!: boolean;
@@ -127,14 +103,6 @@ export function BProp(opts?: PropOpts<boolean>): TypedVueDecorator<boolean> {
  * There are various preconfigured flavors of this decorator for different
  * types already available:
  * {@link SProp} {@link NProp} {@link DProp} {@link BProp}
- *
- * Additional Options:
- * `opts.default`   | {@link RecordPropOpts#default}
- * `opts.literal`   | {@link RecordPropOpts#literal}
- * `opts.required`  | {@link RecordPropOpts#required}
- * `opts.twoWay`    | {@link RecordPropOpts#twoWay}
- * `opts.validator` | {@link RecordPropOpts#validator}
- * `opts.model`     | {@link RecordPropOpts#model}
  *
  * @example
  * ```TS

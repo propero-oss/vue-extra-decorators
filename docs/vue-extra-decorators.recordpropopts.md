@@ -2,20 +2,25 @@
 
 [Home](./index.md) &gt; [@propero/vue-extra-decorators](./vue-extra-decorators.md) &gt; [RecordPropOpts](./vue-extra-decorators.recordpropopts.md)
 
-## RecordPropOpts type
+## RecordPropOpts interface
 
 Parameters of the [@Prop](./vue-extra-decorators.prop.md) decorator and its flavors
 
 <b>Signature:</b>
 
 ```typescript
-export declare type RecordPropOpts<T> = {
-    type?: Constructor<T> | Constructor<any>[];
-    default?: T | TFunction<T>;
-    literal?: T;
-    required?: boolean;
-    twoWay?: boolean;
-    validator?: SingleArgFunction<boolean, T>;
-    model?: boolean | string;
-};
+export interface RecordPropOpts<T> 
 ```
+
+## Properties
+
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [default](./vue-extra-decorators.recordpropopts.default.md) | <code>T &#124; TFunction&lt;T&gt;</code> | A default value or a function constructing a default value. Arrays or objects are supported, if you want to use a literal function as a default value, use literal instead. |
+|  [literal](./vue-extra-decorators.recordpropopts.literal.md) | <code>T</code> | A default value. If a function is given, it will be passed as a literal value instead of being executed as a factory. |
+|  [model](./vue-extra-decorators.recordpropopts.model.md) | <code>boolean &#124; string</code> | Marks this property as a model property, if true is given, it will use the event 'update:PROPNAME' as the binding trigger, where PROPNAME is the name of the decorated property. If a string is given, it will be used in place of the event instead. |
+|  [required](./vue-extra-decorators.recordpropopts.required.md) | <code>boolean</code> | Whether or not the property is required. |
+|  [twoWay](./vue-extra-decorators.recordpropopts.twoway.md) | <code>boolean</code> | Whether or not the property is a two way property. |
+|  [type](./vue-extra-decorators.recordpropopts.type.md) | <code>Constructor&lt;T&gt; &#124; Constructor&lt;any&gt;[]</code> | The type of the property. Should be a constructor function or an array of constructor functions. |
+|  [validator](./vue-extra-decorators.recordpropopts.validator.md) | <code>SingleArgFunction&lt;boolean, T&gt;</code> | A validator function returning true if a given value is valid and false otherwise. |
+

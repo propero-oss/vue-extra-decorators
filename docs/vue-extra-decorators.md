@@ -55,6 +55,18 @@
 |  [SProp(opts)](./vue-extra-decorators.sprop.md) | Declares a Vue property. String flavor of [@Prop](./vue-extra-decorators.prop.md) decorator |
 |  [wasPrevented(ev)](./vue-extra-decorators.wasprevented.md) | A predicate that checks if the first parameter (assumed event) was prevented with . |
 
+## Interfaces
+
+|  Interface | Description |
+|  --- | --- |
+|  [RecordPropOpts](./vue-extra-decorators.recordpropopts.md) | Parameters of the [@Prop](./vue-extra-decorators.prop.md) decorator and its flavors |
+
+## Variables
+
+|  Variable | Description |
+|  --- | --- |
+|  [Component](./vue-extra-decorators.component.md) |  |
+
 ## Type Aliases
 
 |  Type Alias | Description |
@@ -63,7 +75,6 @@
 |  [BeforeFunction](./vue-extra-decorators.beforefunction.md) |  |
 |  [ParamsTransformFunction](./vue-extra-decorators.paramstransformfunction.md) |  |
 |  [PropOpts](./vue-extra-decorators.propopts.md) | Parameters of the [@Prop](./vue-extra-decorators.prop.md) decorator and its flavors |
-|  [RecordPropOpts](./vue-extra-decorators.recordpropopts.md) | Parameters of the [@Prop](./vue-extra-decorators.prop.md) decorator and its flavors |
 |  [ResultTransformFunction](./vue-extra-decorators.resulttransformfunction.md) |  |
 |  [WrapperFunction](./vue-extra-decorators.wrapperfunction.md) |  |
 

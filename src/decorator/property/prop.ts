@@ -8,34 +8,40 @@ import {optionsExtension} from "@/vue";
  * Parameters of the {@link Prop | @Prop} decorator and its flavors
  * @public
  */
-export type RecordPropOpts<T> = {
+export interface RecordPropOpts<T> {
   /**
    * The type of the property. Should be a constructor function or
    * an array of constructor functions.
+   * @public
    */
   type?: Constructor<T> | Constructor<any>[];
   /**
    * A default value or a function constructing a default value.
-   * Arrays or objects are supported, if you want to use a function
-   * as a value, use {@link RecordPropOpts#literal} instead.
+   * Arrays or objects are supported, if you want to use a literal
+   * function as a default value, use literal instead.
+   * @public
    */
   default?: T | TFunction<T>;
   /**
    * A default value. If a function is given, it will be passed as a
-   * literal value instead of executed.
+   * literal value instead of being executed as a factory.
+   * @public
    */
   literal?: T;
   /**
    * Whether or not the property is required.
+   * @public
    */
   required?: boolean;
   /**
-   * Whether or not the options is two way.
+   * Whether or not the property is a two way property.
+   * @public
    */
   twoWay?: boolean;
   /**
    * A validator function returning true if a given value is valid
    * and false otherwise.
+   * @public
    */
   validator?: SingleArgFunction<boolean, T>;
   /**
@@ -43,9 +49,10 @@ export type RecordPropOpts<T> = {
    * will use the event 'update:PROPNAME' as the binding trigger,
    * where PROPNAME is the name of the decorated property. If a
    * string is given, it will be used in place of the event instead.
+   * @public
    */
-  model?: boolean | string
-};
+  model?: boolean | string;
+}
 
 /**
  * Parameters of the {@link Prop | @Prop} decorator and its flavors
@@ -77,15 +84,6 @@ export function isTypeLiteralOption<T>(opts: PropOpts<T>): opts is (Constructor<
  * There are various preconfigured flavors of this decorator for different
  * types already available:
  * {@link SProp} {@link NProp} {@link DProp} {@link BProp}
- *
- * Additional Options:
- * `opts.type`      | {@link RecordPropOpts#"type"}
- * `opts.default`   | {@link RecordPropOpts#default}
- * `opts.literal`   | {@link RecordPropOpts#literal}
- * `opts.required`  | {@link RecordPropOpts#required}
- * `opts.twoWay`    | {@link RecordPropOpts#twoWay}
- * `opts.validator` | {@link RecordPropOpts#validator}
- * `opts.model`     | {@link RecordPropOpts#model}
  *
  * @example
  * ```TS

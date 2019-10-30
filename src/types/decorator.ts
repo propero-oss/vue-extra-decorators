@@ -14,4 +14,4 @@ export type TypedPropertyDecorator<T, C = any, K extends keyof C = keyof C>
  * @internal
  */
 export type TypedVueDecorator<T, C = any, K extends keyof C = keyof C>
-  = (target: T, key: K, index?: number) => void;
+  = (target: C, key: K, index?: number) => void;

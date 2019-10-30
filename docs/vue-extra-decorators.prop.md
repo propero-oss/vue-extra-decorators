@@ -27,8 +27,6 @@ export declare function Prop<T>(opts?: PropOpts<T>, typeOverride?: Constructor<T
 
 There are various preconfigured flavors of this decorator for different types already available: [SProp()](./vue-extra-decorators.sprop.md) [NProp()](./vue-extra-decorators.nprop.md) [DProp()](./vue-extra-decorators.dprop.md) [BProp()](./vue-extra-decorators.bprop.md)
 
-Additional Options: `opts.type` \|  `opts.default` \|  `opts.literal` \|  `opts.required` \|  `opts.twoWay` \|  `opts.validator` \|  `opts.model` \| 
-
 ## Example
 
 
