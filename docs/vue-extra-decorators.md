@@ -50,8 +50,8 @@
 |  [Prop(opts, typeOverride)](./vue-extra-decorators.prop.md) | Declares a Vue property. |
 |  [Route(route)](./vue-extra-decorators.route.md) | Registers a route for a given component Decorator for components |
 |  [RouteName()](./vue-extra-decorators.routename.md) | Binds the current route name to a class member. Decorator for properties. On setting the decorated property, a navigation will occur to the set route name using . |
-|  [RouteParam(name)](./vue-extra-decorators.routeparam.md) | Binds a route param to a class member. Decorator for properties. On setting the decorated property, a navigation will occur to the current route with new params using . |
-|  [RouteQuery(name)](./vue-extra-decorators.routequery.md) | Binds a route query to a class member. Decorator for properties. On setting the decorated property, a navigation will occur to the current route with new query using . |
+|  [RouteParam(name, props)](./vue-extra-decorators.routeparam.md) | Binds a route param to a class member. Decorator for properties. On setting the decorated property, a navigation will occur to the current route with new params using . |
+|  [RouteQuery(name, props)](./vue-extra-decorators.routequery.md) | Binds a route query to a class member. Decorator for properties. On setting the decorated property, a navigation will occur to the current route with new query using . |
 |  [SProp(opts)](./vue-extra-decorators.sprop.md) | Declares a Vue property. String flavor of [@Prop](./vue-extra-decorators.prop.md) decorator |
 |  [wasPrevented(ev)](./vue-extra-decorators.wasprevented.md) | A predicate that checks if the first parameter (assumed event) was prevented with . |
 
@@ -60,6 +60,8 @@
 |  Interface | Description |
 |  --- | --- |
 |  [RecordPropOpts](./vue-extra-decorators.recordpropopts.md) | Parameters of the [@Prop](./vue-extra-decorators.prop.md) decorator and its flavors |
+|  [RouteParamOptions](./vue-extra-decorators.routeparamoptions.md) |  |
+|  [RouteQueryOptions](./vue-extra-decorators.routequeryoptions.md) |  |
 
 ## Variables
 

@@ -9,7 +9,7 @@ Binds a route param to a class member. Decorator for properties. On setting the 
 <b>Signature:</b>
 
 ```typescript
-export declare function RouteParam(name: string): TypedVueDecorator<any>;
+export declare function RouteParam(name: string, props?: RouteParamOptions<any>): TypedVueDecorator<any>;
 ```
 
 ## Parameters
@@ -17,6 +17,7 @@ export declare function RouteParam(name: string): TypedVueDecorator<any>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  name | <code>string</code> |  |
+|  props | <code>RouteParamOptions&lt;any&gt;</code> |  |
 
 <b>Returns:</b>
 
