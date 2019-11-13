@@ -1,7 +1,13 @@
 import {TypedVueDecorator} from "@/types";
 import {calculatedProp} from "@/vue";
+import {Vue} from "vue/types/vue";
 
 
+
+export interface RouteParamOptions<T> {
+  default?: T | ((this: Vue) => T);
+  literal?: T;
+}
 
 /**
  * Binds a route param to a class member.
@@ -35,9 +41,14 @@ import {calculatedProp} from "@/vue";
  * {@link RouteParam} {@link RouteQuery} {@link RouteName} {@link Route}
  * @public
  */
-export function RouteParam(name: string): TypedVueDecorator<any> {
+export function RouteParam(name: string, props: RouteParamOptions<any> = {}): TypedVueDecorator<any> {
+  const value = props.literal != null ? () => props.literal : typeof props.default === "function" ? props.default : () => props.default;
   return calculatedProp<string>(
-    function() { return this.$route && this.$route.params[name]; },
+    function() {
+      if (this.$route == null || this.$route.params[name] == null)
+        return value ? value.call(this) : undefined;
+      return this.$route.params[name];
+    },
     function(value) { this.$router.replace({ params: { ...this.$route.params, [name]: value } }); }
   );
 }

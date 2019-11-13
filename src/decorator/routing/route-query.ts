@@ -1,7 +1,13 @@
 import {TypedVueDecorator} from "@/types";
 import {calculatedProp} from "@/vue";
+import {Vue} from "vue/types/vue";
 
 
+
+export interface RouteQueryOptions<T> {
+  default?: T | ((this: Vue) => T);
+  literal?: T;
+}
 
 /**
  * Binds a route query to a class member.
@@ -35,9 +41,14 @@ import {calculatedProp} from "@/vue";
  * {@link RouteParam} {@link RouteQuery} {@link RouteName} {@link Route}
  * @public
  */
-export function RouteQuery(name: string): TypedVueDecorator<any> {
+export function RouteQuery(name: string, props: RouteQueryOptions<any> = {}): TypedVueDecorator<any> {
+  const value = props.literal != null ? () => props.literal : typeof props.default === "function" ? props.default : () => props.default;
   return calculatedProp<string | (string | null)[]>(
-    function() { return this.$route && this.$route.query[name]; },
-    function(value) { this.$router.replace({ query: { ...this.$route.params, [name]: value } }); }
+    function() {
+      if (this.$route == null || this.$route.query[name] == null)
+        return value ? value.call(this) : undefined;
+      return this.$route.query[name];
+      },
+    function(value) { this.$router.replace({ query: { ...this.$route.query, [name]: value } }); }
   );
 }
