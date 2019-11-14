@@ -49,6 +49,6 @@ export function RouteQuery(name: string, props: RouteQueryOptions<any> = {}): Ty
         return value ? value.call(this) : undefined;
       return this.$route.query[name];
       },
-    function(value) { this.$router.replace({ query: { ...this.$route.query, [name]: value } }); }
+    function(value) { this.$router.replace({ ...this.$route, query: { ...this.$route.query, [name]: value } }); }
   );
 }

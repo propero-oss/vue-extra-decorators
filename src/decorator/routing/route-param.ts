@@ -49,6 +49,6 @@ export function RouteParam(name: string, props: RouteParamOptions<any> = {}): Ty
         return value ? value.call(this) : undefined;
       return this.$route.params[name];
     },
-    function(value) { this.$router.replace({ params: { ...this.$route.params, [name]: value } }); }
+    function(value) { this.$router.replace({ ...this.$route, params: { ...this.$route.params, [name]: value } }); }
   );
 }
