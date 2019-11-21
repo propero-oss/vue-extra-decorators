@@ -31,6 +31,6 @@ export function isOneInPath(...refs: string[]) {
     if (!this.$refs) return refs.length === 0;
     const resolvedRefs = refs.map(ref => this.$refs[ref]) as any[];
     const path = ev.composedPath();
-    return !!resolvedRefs.find(ref => path.indexOf(ref.$el || ref) !== -1);
+    return !!resolvedRefs.find(ref => ref && path.indexOf(ref.$el || ref) !== -1);
   };
 }
