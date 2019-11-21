@@ -1,5 +1,8 @@
 ## Changelog
 
+### v1.2.3
+- fix: make classes decorator work on prototypes and static classes [[067883]](4c380f06d66a4bafa960e999c176ff32a1067883)
+
 ### v1.2.2
 - fix: make isInPath variants tolerant of unset refs [[21dd9f]](320daf1cc4fd162aa47705f65278efe46221dd9f)
 
@@ -79,4 +82,4 @@
 - function and descriptor util [[bac080]](1695b8b38c3b2290851581613cef0ba3f4bac080)
 - Initial commit [[7821b0]](e2cfffe21a09fa25d43551edf90f4a0add7821b0)
 
-###### Generated on 2019-11-21T09:19:31.977Z | Made with @propero/ngm
+###### Generated on 2019-11-21T10:27:59.230Z | Made with @propero/ngm
