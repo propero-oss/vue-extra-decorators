@@ -1,6 +1,6 @@
 {
   "name": "@propero/vue-extra-decorators",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Additional decorators built on vue-class-component",
   "main": "dist/main.cjs.js",
   "module": "dist/main.esm.js",
