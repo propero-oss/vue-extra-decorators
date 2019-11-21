@@ -48,7 +48,7 @@ export function Classes(
   converter: TFunction<string, [string, boolean]> = s => s
 ) {
   return <T>(target: any, key: string, desc: CalculatedPropertyDescriptor<ClassesGetter<T>>) => {
-    if (prefix == null) prefix = converter(target.name, false);
+    if (prefix == null) prefix = converter(target.constructor ? target.constructor.name : target.name, false);
     wrapGetter(desc, function(orig) {
       const val = orig();
       const result: Record<string, boolean> = {};
