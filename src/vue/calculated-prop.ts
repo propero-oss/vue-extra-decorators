@@ -12,6 +12,6 @@ import {Vue} from "vue/types/vue";
  */
 export function calculatedProp<T>(get: Getter<T, Vue>, set?: Setter<T, Vue>): TypedVueDecorator<T> {
   return optionsExtension<T>(key => {
-    return { computed: { [key]: { get, set } } };
+    return { computed: { [key]: set ? { get, set } : { get } } };
   });
 }
