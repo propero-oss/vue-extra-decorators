@@ -23,26 +23,26 @@ const converter = composeConverter(pascalToCamel, camelToPascal);
  *
  * @example
  * ```TS
- * const lower = (str: string) => str.toLowerCase();
  * @Component({ template: `<div :class="classes">Hello World</div>` })
  * class MyVueComponent extends Vue {
  *   @ClassesCamel()
  *   private get classes() {
  *     return {
  *       alignLeft: true,
- *       alignRight: false
+ *       alignRight: false,
+ *       direction: "left"
  *     }
  *   }
  * }
  * ```
  * Renders:
  * ```HTML
- * <div class="myVueComponent myVueComponentAlignLeft">Hello World</div>
+ * <div class="myVueComponent myVueComponentAlignLeft myVueComponentDirectionLeft">Hello World</div>
  * ```
  *
  * {@link Classes} {@link ClassesCamel} {@link ClassesKebap} {@link ClassesPascal} {@link ClassesSnake}
  * @public
  */
 export function ClassesCamel(prefix?: string, infix?: string): ReturnType<typeof Classes> {
-  return Classes(prefix, infix, name => name.replace(/^[A-Z]+/, converter));
+  return Classes(prefix, infix, converter);
 }

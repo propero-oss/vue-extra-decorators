@@ -1,6 +1,9 @@
-import {Classes} from "@/decorator/css/classes";
+import {Classes, composeConverter} from "@/decorator/css/classes";
 import {pascalToSnake} from "@/util";
 
+
+
+const converter = composeConverter(pascalToSnake, pascalToSnake);
 
 
 /**
@@ -21,26 +24,26 @@ import {pascalToSnake} from "@/util";
  *
  * @example
  * ```TS
- * const lower = (str: string) => str.toLowerCase();
  * @Component({ template: `<div :class="classes">Hello World</div>` })
  * class MyVueComponent extends Vue {
  *   @ClassesSnake()
  *   private get classes() {
  *     return {
  *       alignLeft: true,
- *       alignRight: false
+ *       alignRight: false,
+ *       direction: "left"
  *     }
  *   }
  * }
  * ```
  * Renders:
  * ```HTML
- * <div class="my_vue_component my_vue_component--align_left">Hello World</div>
+ * <div class="my_vue_component my_vue_component--align_left my_vue_component--direction_left">Hello World</div>
  * ```
  *
  * {@link Classes} {@link ClassesCamel} {@link ClassesKebap} {@link ClassesPascal} {@link ClassesSnake}
  * @public
  */
 export function ClassesSnake(prefix?: string, infix: string = "--"): ReturnType<typeof Classes> {
-  return Classes(prefix, infix, pascalToSnake);
+  return Classes(prefix, infix, converter);
 }

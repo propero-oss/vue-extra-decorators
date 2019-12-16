@@ -1,7 +1,9 @@
-import {Classes} from "@/decorator/css/classes";
+import {Classes, composeConverter} from "@/decorator/css/classes";
 import {camelToPascal} from "@/util";
 
 
+
+const converter = composeConverter(camelToPascal, camelToPascal);
 
 /**
  * Pascal case specific flavor of {@link Classes} decorator.
@@ -21,26 +23,26 @@ import {camelToPascal} from "@/util";
  *
  * @example
  * ```TS
- * const lower = (str: string) => str.toLowerCase();
  * @Component({ template: `<div :class="classes">Hello World</div>` })
  * class MyVueComponent extends Vue {
  *   @ClassesPascal()
  *   private get classes() {
  *     return {
  *       alignLeft: true,
- *       alignRight: false
+ *       alignRight: false,
+ *       direction: "left"
  *     }
  *   }
  * }
  * ```
  * Renders:
  * ```HTML
- * <div class="MyVueComponent MyVueComponentAlignLeft">Hello World</div>
+ * <div class="MyVueComponent MyVueComponentAlignLeft MyVueComponentDirectionLeft">Hello World</div>
  * ```
  *
  * {@link Classes} {@link ClassesCamel} {@link ClassesKebap} {@link ClassesPascal} {@link ClassesSnake}
  * @public
  */
 export function ClassesPascal(prefix?: string, infix?: string): ReturnType<typeof Classes> {
-  return Classes(prefix, infix, camelToPascal);
+  return Classes(prefix, infix, converter);
 }

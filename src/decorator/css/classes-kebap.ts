@@ -1,6 +1,9 @@
-import {Classes} from "@/decorator/css/classes";
+import {Classes, composeConverter} from "@/decorator/css/classes";
 import {pascalToKebap} from "@/util";
 
+
+
+const converter = composeConverter(pascalToKebap, pascalToKebap);
 
 
 /**
@@ -21,26 +24,26 @@ import {pascalToKebap} from "@/util";
  *
  * @example
  * ```TS
- * const lower = (str: string) => str.toLowerCase();
  * @Component({ template: `<div :class="classes">Hello World</div>` })
  * class MyVueComponent extends Vue {
  *   @ClassesKebap()
  *   private get classes() {
  *     return {
  *       alignLeft: true,
- *       alignRight: false
+ *       alignRight: false,
+ *       direction: "left"
  *     }
  *   }
  * }
  * ```
  * Renders:
  * ```HTML
- * <div class="my-vue-component my-vue-component--align-left">Hello World</div>
+ * <div class="my-vue-component my-vue-component--align-left my-vue-component--direction-left">Hello World</div>
  * ```
  *
  * {@link Classes} {@link ClassesCamel} {@link ClassesKebap} {@link ClassesPascal} {@link ClassesSnake}
  * @public
  */
 export function ClassesKebap(prefix?: string, infix: string = "--"): ReturnType<typeof Classes> {
-  return Classes(prefix, infix, pascalToKebap);
+  return Classes(prefix, infix, converter);
 }

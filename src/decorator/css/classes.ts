@@ -25,18 +25,19 @@ import {ClassesGetter, TFunction} from "@/types";
  * const lower = (str: string) => str.toLowerCase();
  * @Component({ template: `<div :class="classes">Hello World</div>` })
  * class MyVueComponent extends Vue {
- *   @Classes("my-prefix", "--", lower)
+ *   @Classes("my-prefix", "--", composeConverter(lower, lower))
  *   private get classes() {
  *     return {
  *       alignLeft: true,
- *       alignRight: false
+ *       alignRight: false,
+ *       direction: "left"
  *     }
  *   }
  * }
  * ```
  * Renders:
  * ```HTML
- * <div class="my-prefix my-prefix--alignleft">Hello World</div>
+ * <div class="my-prefix my-prefix--alignleft my-prefix--directionleft">Hello World</div>
  * ```
  *
  * {@link ClassesCamel} {@link ClassesKebap} {@link ClassesPascal} {@link ClassesSnake}
@@ -45,7 +46,7 @@ import {ClassesGetter, TFunction} from "@/types";
 export function Classes(
   prefix?: string,
   infix: string = "",
-  converter: TFunction<string, [string, boolean]> = s => s
+  converter: TFunction<string, [string | [string, string], boolean]> = s => typeof s === "string" ? s : s.join("")
 ) {
   return <T>(target: any, key: string, desc: CalculatedPropertyDescriptor<ClassesGetter<T>>) => {
     if (prefix == null) prefix = converter(target.constructor ? target.constructor.name : target.name, false);
@@ -54,7 +55,10 @@ export function Classes(
       const result: Record<string, boolean> = {};
       if (prefix) result[prefix] = true;
       for (const [key, value] of Object.entries(val))
-        result[prefix + infix + converter(key, true)] = value;
+        if (typeof value === "string")
+          result[prefix + infix + converter([key, value], true)] = true;
+        else
+          result[prefix + infix + converter(key, true)] = value;
       return result;
     });
   };
@@ -68,6 +72,11 @@ export function Classes(
  * {@link Classes} {@link ClassesCamel} {@link ClassesKebap} {@link ClassesPascal} {@link ClassesSnake}
  * @public
  */
-export function composeConverter(className: TFunction<string, [string]>, memberName: TFunction<string, [string]>) {
-  return (name: string, member: boolean) => member ? memberName(name) : className(name);
+export function composeConverter(
+  className: TFunction<string, [string]>,
+  memberName: TFunction<string, [string]>
+) {
+  return (name: string | [string, string], member: boolean) => member
+    ? memberName(Array.isArray(name) ? name[0] + name[1][0].toUpperCase() + name[1].substr(1) : name)
+    : className(name as string);
 }
