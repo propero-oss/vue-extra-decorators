@@ -1,6 +1,6 @@
 import {Constructor, SingleArgFunction, TFunction, TypedVueDecorator} from "@/types";
+import {isTypeLiteral} from "@/vue/properties/is-type-literal-options";
 import {optionsExtension} from "@/vue";
-
 
 
 
@@ -61,16 +61,6 @@ export interface RecordPropOpts<T> {
 export type PropOpts<T> = Constructor<T> | Constructor<any>[] | RecordPropOpts<T>;
 
 /**
- * Checks if a given object is a type literal option or a record
- * @param opts - the options to check
- * @returns true, if the options is either an array or a constructor
- * @internal
- */
-export function isTypeLiteralOption<T>(opts: PropOpts<T>): opts is (Constructor<T> | Constructor<any>[]) {
-  return typeof opts === "function" || Array.isArray(opts);
-}
-
-/**
  * Declares a Vue property.
  * @param opts - The property options to pass to vue, it can either be
  *  a constructor function like String or Number, an array of constructor
@@ -101,7 +91,7 @@ export function isTypeLiteralOption<T>(opts: PropOpts<T>): opts is (Constructor<
 export function Prop<T>(opts: PropOpts<T> = {}, typeOverride?: Constructor<T>): TypedVueDecorator<T> {
 
   // Type literal to record def
-  if (isTypeLiteralOption<T>(opts))
+  if (isTypeLiteral(opts))
     opts = { type: opts };
 
   const {default: def, literal, model} = opts;
@@ -117,7 +107,9 @@ export function Prop<T>(opts: PropOpts<T> = {}, typeOverride?: Constructor<T>): 
 
   return optionsExtension((key, allOpts, theType) => {
     // Metadata if not overridden
-    if (!(opts as any).type) (opts as any).type = typeOverride || theType;
+    if (!(opts as any).type)
+      (opts as any).type = typeOverride || theType;
+
     const props = { [key]: opts };
     // Simple Property
     if (!model) return { props };
