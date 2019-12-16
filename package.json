@@ -51,7 +51,7 @@
     "ts-node": "^8.4.1",
     "tslint": "^5.20.0",
     "ttypescript": "^1.5.7",
-    "typescript": "^3.6.4",
+    "typescript": "^3.7.3",
     "typescript-transform-paths": "^1.1.11",
     "vue": "^2.6.10",
     "vue-router": "^3.1.3"
