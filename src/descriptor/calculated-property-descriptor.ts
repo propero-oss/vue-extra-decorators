@@ -1,6 +1,4 @@
-import {Getter, Setter} from "@/types";
-
-
+import { Getter, Setter } from "../types";
 
 /**
  * A descriptor of a calculated property (get/set | value)
@@ -11,4 +9,3 @@ export type CalculatedPropertyDescriptor<T> = PropertyDescriptor & {
   value?: T;
   set?: Setter<T>;
 };
-

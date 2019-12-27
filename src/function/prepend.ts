@@ -1,8 +1,6 @@
-import {extend} from "@/function/extend";
-import {BeforeFunction, ExtendedFunction} from "@/function/extended-function";
-import {TFunction} from "@/types";
-
-
+import { extend } from "./extend";
+import { BeforeFunction, ExtendedFunction } from "./extended-function";
+import { TFunction } from "../types";
 
 /**
  * Prepend a function to another, so it gets called before the original is called.

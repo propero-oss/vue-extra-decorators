@@ -1,8 +1,6 @@
-import {wrapFunction} from "@/descriptor";
-import {TFunction} from "@/types";
-import {callbackToPromise} from "@/util";
-
-
+import { wrapFunction } from "../../descriptor";
+import { AnyFunction } from "../../types";
+import { callbackToPromise } from "../../util";
 
 /**
  * Delay function calls by a specified amount of time.
@@ -33,8 +31,8 @@ import {callbackToPromise} from "@/util";
  * @public
  */
 export function Delay(ms: number = 1000) {
-  return (target: any, key: string, desc: TypedPropertyDescriptor<TFunction>) => {
-    wrapFunction(desc, function({args, orig}) {
+  return (target: any, key: string, desc: TypedPropertyDescriptor<AnyFunction>) => {
+    wrapFunction(desc, function({ args, orig }) {
       return callbackToPromise(setTimeout, orig.bind(this, ...args), ms);
     });
   };

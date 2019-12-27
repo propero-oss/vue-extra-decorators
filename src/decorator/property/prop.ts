@@ -1,8 +1,5 @@
-import {Constructor, SingleArgFunction, TFunction, TypedVueDecorator} from "@/types";
-import {isTypeLiteral} from "@/vue/properties/is-type-literal-options";
-import {optionsExtension} from "@/vue";
-
-
+import { Constructor, SingleArgFunction, TFunction, TypedPropertyDecorator } from "../../types";
+import { isTypeLiteral, optionsExtension } from "../../vue";
 
 /**
  * Parameters of the {@link Prop | @Prop} decorator and its flavors
@@ -88,17 +85,14 @@ export type PropOpts<T> = Constructor<T> | Constructor<any>[] | RecordPropOpts<T
  * {@link SProp} {@link NProp} {@link DProp} {@link BProp}
  * @public
  */
-export function Prop<T>(opts: PropOpts<T> = {}, typeOverride?: Constructor<T>): TypedVueDecorator<T> {
-
+export function Prop<T>(opts: PropOpts<T> = {}, typeOverride?: Constructor<T>): TypedPropertyDecorator<T> {
   // Type literal to record def
-  if (isTypeLiteral(opts))
-    opts = { type: opts };
+  if (isTypeLiteral(opts)) opts = { type: opts };
 
-  const {default: def, literal, model} = opts;
+  const { default: def, literal, model } = opts;
 
   // Possible to pass arrays and objects as default values
-  if ("default" in opts && typeof def === "object" || Array.isArray(def))
-    opts.default = () => def as T;
+  if (("default" in opts && typeof def === "object") || Array.isArray(def)) opts.default = () => def as T;
 
   // Possible to pass literal functions as default values
   if (opts.literal) opts.default = () => literal as T;
@@ -107,19 +101,20 @@ export function Prop<T>(opts: PropOpts<T> = {}, typeOverride?: Constructor<T>): 
 
   return optionsExtension((key, allOpts, theType) => {
     // Metadata if not overridden
-    if (!(opts as any).type)
-      (opts as any).type = typeOverride || theType;
+    if (!(opts as any).type) (opts as any).type = typeOverride || theType;
 
     const props = { [key]: opts };
     // Simple Property
     if (!model) return { props };
 
-    if (allOpts.model)
-      throw new Error("Cannot define more than one model");
+    if (allOpts.model) throw new Error("Cannot define more than one model");
     // Model Property
-    return { props, model: {
-      prop: key,
-      event: typeof model === "string" ? model : `update:${key}`
-    }};
+    return {
+      props,
+      model: {
+        prop: key,
+        event: typeof model === "string" ? model : `update:${key}`
+      }
+    };
   });
 }

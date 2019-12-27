@@ -1,7 +1,5 @@
-import {wrapFunction} from "@/descriptor";
-import {TFunction} from "@/types";
-
-
+import { wrapFunction } from "../../descriptor";
+import { AnyFunction } from "../../types";
 
 /**
  * Delay function calls by a vue tick using this.$nextTick.
@@ -30,8 +28,8 @@ import {TFunction} from "@/types";
  * @public
  */
 export function NextTick() {
-  return (target: any, key: string, desc: TypedPropertyDescriptor<TFunction>) => {
-    wrapFunction(desc, function({args, orig}) {
+  return (target: any, key: string, desc: TypedPropertyDescriptor<AnyFunction>) => {
+    wrapFunction(desc, function({ args, orig }) {
       return this.$nextTick().then(() => orig.apply(this, args));
     });
   };

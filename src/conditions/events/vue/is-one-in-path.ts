@@ -1,6 +1,4 @@
-import {Vue} from "vue/types/vue";
-
-
+import { Vue } from "vue/types/vue";
 
 /**
  * Creates a predicate that checks if its first parameter (assumed event) has

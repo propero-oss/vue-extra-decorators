@@ -1,12 +1,12 @@
-import {TypedVueDecorator} from "@/types";
-import {calculatedProp} from "@/vue";
-import {Vue} from "vue/types/vue";
-
-
+import { TypedPropertyDecorator } from "../../types";
+import { calculatedProp } from "../../vue";
+import { Vue } from "vue/types/vue";
 
 export interface RouteQueryOptions<T> {
   default?: T | ((this: Vue) => T);
   literal?: T;
+  parser?: (val: string | (string | null)[]) => T;
+  serializer?: (val?: T) => string | (string | null)[];
 }
 
 /**
@@ -41,14 +41,19 @@ export interface RouteQueryOptions<T> {
  * {@link RouteParam} {@link RouteQuery} {@link RouteName} {@link Route}
  * @public
  */
-export function RouteQuery(name: string, props: RouteQueryOptions<any> = {}): TypedVueDecorator<any> {
-  const value = props.literal != null ? () => props.literal : typeof props.default === "function" ? props.default : () => props.default;
-  return calculatedProp<string | (string | null)[]>(
-    function() {
-      if (this.$route == null || this.$route.query[name] == null)
-        return value ? value.call(this) : undefined;
-      return this.$route.query[name];
-      },
-    function(value) { this.$router.replace({ ...this.$route, query: { ...this.$route.query, [name]: value } }); }
+export function RouteQuery<T = any>(name: string, props: RouteQueryOptions<T> = {}): TypedPropertyDecorator<T> {
+  const value: any =
+    props.literal != null ? () => props.literal : typeof props.default === "function" ? props.default : () => props.default;
+  return calculatedProp<T>(
+    function(this: any) {
+      if (this.$route == null || this.$route.query[name] == null) return value ? value.call(this) : undefined;
+      if (props.parser) return props.parser(this.$route.query[name]);
+      return this.$route.query[name] as any;
+    },
+    function(this: any, value) {
+      const serialized = props.serializer ? props.serializer(value) : value;
+      if (!this.$route || this.$route.query[name] !== serialized)
+        this.$router.replace({ ...this.$route, query: { ...this.$route.query, [name]: serialized as any } });
+    }
   );
 }

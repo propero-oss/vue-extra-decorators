@@ -1,7 +1,5 @@
-import {TypedVueDecorator} from "@/types";
-import {calculatedProp} from "@/vue";
-
-
+import { TypedPropertyDecorator } from "../../types";
+import { calculatedProp } from "../../vue";
 
 /**
  * Binds the current route name to a class member.
@@ -34,9 +32,13 @@ import {calculatedProp} from "@/vue";
  * {@link RouteParam} {@link RouteQuery} {@link RouteName} {@link Route}
  * @public
  */
-export function RouteName(): TypedVueDecorator<string> {
+export function RouteName(): TypedPropertyDecorator<string | undefined> {
   return calculatedProp<string | undefined>(
-    function() { return this.$route && this.$route.name; },
-    function(value) { this.$router.replace({ name: value }); }
+    function(this: any) {
+      return this.$route && this.$route.name;
+    },
+    function(this: any, value) {
+      if (!this.$route || this.$route.name !== value) this.$router.replace({ name: value });
+    }
   );
 }

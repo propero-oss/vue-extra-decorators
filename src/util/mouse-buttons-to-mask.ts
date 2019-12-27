@@ -1,6 +1,4 @@
-import {MouseButton} from "@/types";
-
-
+import { MouseButton } from "../types";
 
 const buttonMap: Record<MouseButton, number> = {
   LEFT: 1,
@@ -18,6 +16,6 @@ const buttonMap: Record<MouseButton, number> = {
  */
 export function mouseButtonsToMask(buttons: MouseButton[]): number {
   let mask = 0;
-  buttons.forEach(button => mask |= buttonMap[button]);
+  buttons.forEach(button => (mask |= buttonMap[button]));
   return mask;
 }

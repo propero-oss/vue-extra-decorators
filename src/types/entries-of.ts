@@ -1,5 +1,3 @@
-
-
 /**
  * An entry of {@link Object.entries}, strong typed.
  * @internal

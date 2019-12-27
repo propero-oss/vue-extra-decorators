@@ -1,6 +1,4 @@
-import {TFunction} from "@/types";
-
-
+import { TFunction } from "../../types";
 
 /**
  * Merges multiple predicates into one.
@@ -21,5 +19,7 @@ import {TFunction} from "@/types";
  * @public
  */
 export function or(...fns: TFunction<boolean>[]): TFunction<boolean> {
-  return function(...args) { return !!fns.find(fn => fn.apply(this, args)); };
+  return function(...args) {
+    return !!fns.find(fn => fn.apply(this, args));
+  };
 }

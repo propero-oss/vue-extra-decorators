@@ -1,7 +1,5 @@
-import {Classes, composeConverter} from "@/decorator/css/classes";
-import {camelToPascal} from "@/util";
-
-
+import { Classes, composeConverter } from "./classes";
+import { camelToPascal } from "../../util";
 
 const converter = composeConverter(camelToPascal, camelToPascal);
 

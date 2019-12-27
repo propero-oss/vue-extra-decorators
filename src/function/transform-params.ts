@@ -1,8 +1,6 @@
-import {extend} from "@/function/extend";
-import {ExtendedFunction, ParamsTransformFunction} from "@/function/extended-function";
-import {TFunction} from "@/types";
-
-
+import { extend } from "./extend";
+import { ExtendedFunction, ParamsTransformFunction } from "./extended-function";
+import { TFunction } from "../types";
 
 /**
  * Transforms the parameters of a given function before execution.

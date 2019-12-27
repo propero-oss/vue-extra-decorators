@@ -1,6 +1,5 @@
-import {calculatedProp, optionsExtension} from "@/vue";
-
-
+import { TypedPropertyDecorator } from "../../types";
+import { calculatedProp } from "../../vue";
 
 /**
  * Creates an accessor to a Vue reference.
@@ -18,7 +17,8 @@ import {calculatedProp, optionsExtension} from "@/vue";
  * ```
  * @public
  */
-export function Ref(ref: string) {
-  return calculatedProp(function() { return this.$refs[ref as any]; });
+export function Ref(ref: string): TypedPropertyDecorator<any> {
+  return calculatedProp(function() {
+    return this.$refs[ref as any];
+  });
 }
-

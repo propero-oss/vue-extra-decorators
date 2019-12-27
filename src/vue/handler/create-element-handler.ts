@@ -1,7 +1,3 @@
-
-
-
-
 /**
  * Create functions for attaching and detaching a dom event handler
  * @param events - The events to listen for
@@ -13,11 +9,11 @@
 export function createElementHandler(events: string[], el: (cxt: any) => EventTarget, key: string) {
   const bound = Symbol(`bound:${key}`);
   return {
-    on(this: any & {[bound]: any}) {
+    on(this: any & { [bound]: any }) {
       const fn = this[bound] || (this[bound] = this[key].bind(this));
       events.forEach(event => el(this).addEventListener(event, fn));
     },
-    off(this: any & {[bound]: any}) {
+    off(this: any & { [bound]: any }) {
       events.forEach(event => el(this).removeEventListener(event, this[bound]));
     }
   };

@@ -1,6 +1,4 @@
-import {TFunction} from "@/types";
-
-
+import { TFunction } from "../../types";
 
 /**
  * Inverts a given predicate (negates its output)
@@ -21,5 +19,7 @@ import {TFunction} from "@/types";
  * @public
  */
 export function not(fn: TFunction<boolean>): TFunction<boolean> {
-  return function(...args) { return !fn.apply(this, args); };
+  return function(...args) {
+    return !fn.apply(this, args);
+  };
 }

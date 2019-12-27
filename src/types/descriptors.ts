@@ -1,6 +1,3 @@
-
-
-
 /**
  * The type of a property get accessor.
  * Can be parameterized with a property type and a context (this) type.
@@ -14,7 +11,6 @@ export type Getter<T, THIS = any> = (this: THIS) => T;
  * @internal
  */
 export type Setter<T, THIS = any> = (this: THIS, value: T) => void;
-
 
 /**
  * The type of a property get accessor.
@@ -31,4 +27,3 @@ export type GetWrapper<OLD_T, NEW_T = OLD_T, THIS = any> = (this: THIS, orig: Ge
  * @internal
  */
 export type SetWrapper<OLD_T, NEW_T = OLD_T, THIS = any> = (this: THIS, orig: Setter<OLD_T>, value: NEW_T) => void;
-

@@ -1,7 +1,5 @@
-import {Prop, PropOpts} from "@/decorator";
-import {TypedVueDecorator} from "@/types";
-
-
+import { Prop, PropOpts } from "./prop";
+import { TypedPropertyDecorator } from "../../types";
 
 /**
  * Declares a Vue property.
@@ -28,7 +26,7 @@ import {TypedVueDecorator} from "@/types";
  * {@link SProp} {@link NProp} {@link DProp} {@link BProp} {@link Prop}
  * @public
  */
-export function SProp(opts?: PropOpts<string>): TypedVueDecorator<string> {
+export function SProp(opts?: PropOpts<string>): TypedPropertyDecorator<string> {
   return Prop<string>(opts, String as any);
 }
 
@@ -57,7 +55,7 @@ export function SProp(opts?: PropOpts<string>): TypedVueDecorator<string> {
  * {@link SProp} {@link NProp} {@link DProp} {@link BProp} {@link Prop}
  * @public
  */
-export function NProp(opts?: PropOpts<number>): TypedVueDecorator<number> {
+export function NProp(opts?: PropOpts<number>): TypedPropertyDecorator<number> {
   return Prop<number>(opts, Number as any);
 }
 
@@ -86,7 +84,7 @@ export function NProp(opts?: PropOpts<number>): TypedVueDecorator<number> {
  * {@link SProp} {@link NProp} {@link DProp} {@link BProp} {@link Prop}
  * @public
  */
-export function BProp(opts?: PropOpts<boolean>): TypedVueDecorator<boolean> {
+export function BProp(opts?: PropOpts<boolean>): TypedPropertyDecorator<boolean> {
   return Prop<boolean>(opts, Boolean as any);
 }
 
@@ -115,6 +113,6 @@ export function BProp(opts?: PropOpts<boolean>): TypedVueDecorator<boolean> {
  * {@link SProp} {@link NProp} {@link DProp} {@link BProp} {@link Prop}
  * @public
  */
-export function DProp(opts?: PropOpts<Date>): TypedVueDecorator<Date> {
+export function DProp(opts?: PropOpts<Date>): TypedPropertyDecorator<Date> {
   return Prop<Date>(opts, Date);
 }

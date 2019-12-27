@@ -1,9 +1,8 @@
-import {createElementHandler} from "@/vue/handler/create-element-handler";
-import {createVueHandler} from "@/vue/handler/create-vue-handler";
-import {append} from "@/function";
-import {createDecorator} from "vue-class-component";
-
-
+import { AnyFunction, TypedPropertyDecorator } from "../../types";
+import { createElementHandler } from "./create-element-handler";
+import { createVueHandler } from "./create-vue-handler";
+import { append } from "../../function/append";
+import { createDecorator } from "vue-class-component";
 
 /**
  * Creates a decorator for event listeners.
@@ -19,11 +18,11 @@ export function createListenerDecorator(
   el: (cxt: any) => any,
   dom: boolean = false,
   attachOn: string[] = ["created"],
-  detachOn: string[] = ["destroyed"],
-) {
-  return createDecorator(((options: any, key) => {
-    const {on, off} = dom ? createElementHandler(events, el, key) : createVueHandler(events, el, key);
-    attachOn.forEach(one => options[one] = append(options[one], on));
-    detachOn.forEach(one => options[one] = append(options[one], off));
-  }));
+  detachOn: string[] = ["destroyed"]
+): TypedPropertyDecorator<AnyFunction> {
+  return createDecorator((options: any, key: string) => {
+    const { on, off } = dom ? createElementHandler(events, el, key) : createVueHandler(events, el, key);
+    attachOn.forEach(one => (options[one] = append(options[one], on)));
+    detachOn.forEach(one => (options[one] = append(options[one], off)));
+  });
 }

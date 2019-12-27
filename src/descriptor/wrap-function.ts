@@ -1,7 +1,5 @@
-import {wrap, WrapperFunction} from "@/function";
-import {TFunction} from "@/types";
-
-
+import { wrap, WrapperFunction } from "../function";
+import { TFunction } from "../types";
 
 /**
  * Wrap a function in a wrapper function
@@ -10,5 +8,5 @@ import {TFunction} from "@/types";
  * @internal
  */
 export function wrapFunction<T extends TFunction>(desc: TypedPropertyDescriptor<T>, wrapper: WrapperFunction<T>) {
-  desc.value = wrap(desc.value!, wrapper) as any as T;
+  desc.value = (wrap(desc.value!, wrapper) as any) as T;
 }

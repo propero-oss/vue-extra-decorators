@@ -1,7 +1,5 @@
-import {wrapFunction} from "@/descriptor";
-import {TFunction} from "@/types";
-
-
+import { wrapFunction } from "../../descriptor";
+import { AnyFunction } from "../../types";
 
 /**
  * Limit function calls to browser frames.
@@ -32,10 +30,10 @@ import {TFunction} from "@/types";
  * @public
  */
 export function LimitToFrames() {
-  return (target: any, propertyKey: string | symbol, desc: TypedPropertyDescriptor<TFunction>) => {
+  return (target: any, propertyKey: string, desc: TypedPropertyDescriptor<AnyFunction>) => {
     const frame = Symbol(`Frame: ${propertyKey as string}`);
 
-    wrapFunction(desc, function({ args, orig }) {
+    wrapFunction(desc, function(this: any, { args, orig }) {
       if (this[frame] != null) return;
       this[frame] = requestAnimationFrame(() => {
         delete this[frame];

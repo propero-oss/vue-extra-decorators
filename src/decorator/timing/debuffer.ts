@@ -1,8 +1,5 @@
-import {wrapFunction} from "@/descriptor";
-import {TFunction} from "@/types";
-
-
-
+import { wrapFunction } from "../../descriptor";
+import { AnyFunction } from "../../types";
 
 /**
  * Debuffer function calls by a specified amount of time
@@ -36,15 +33,14 @@ import {TFunction} from "@/types";
  * @public
  */
 export function Debuffer(ms: number = 200) {
-  return (target: any, key: string, desc: TypedPropertyDescriptor<TFunction>) => {
+  return (target: any, key: string, desc: TypedPropertyDescriptor<AnyFunction>) => {
     const lastCall = Symbol(`debuffer:${key}`);
 
-    wrapFunction(desc, function({args, orig}) {
+    wrapFunction(desc, function({ args, orig }) {
       const now = Date.now();
       const last = this[lastCall] || 0;
       this[lastCall] = now;
-      if (last + ms <= now)
-        orig.apply(this, args);
+      if (last + ms <= now) orig.apply(this, args);
     });
 
     return desc;

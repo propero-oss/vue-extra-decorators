@@ -1,6 +1,3 @@
-
-
-
 /**
  * Converts a camelCased name to PascalCase.
  * @param str - The string to convert

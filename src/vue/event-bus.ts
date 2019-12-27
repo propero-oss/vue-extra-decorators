@@ -1,8 +1,6 @@
-import {AnyFunction} from "@/types";
-import {createListenerDecorator} from "@/vue/handler";
+import { AnyFunction } from "../types";
+import { createListenerDecorator } from "./handler";
 import Vue from "vue";
-
-
 
 const busses: Record<string, typeof Bus.methods & Vue> = {};
 export const Bus = {
@@ -36,8 +34,8 @@ export function EventBus(instance: string = ""): typeof Bus.methods & Vue {
 
 const defaultBus = EventBus();
 const { On, on, off, once, emit } = defaultBus;
-EventBus.On   = On.bind(defaultBus);
-EventBus.on   = on.bind(defaultBus);
-EventBus.off  = off.bind(defaultBus);
+EventBus.On = On.bind(defaultBus);
+EventBus.on = on.bind(defaultBus);
+EventBus.off = off.bind(defaultBus);
 EventBus.once = once.bind(defaultBus);
 EventBus.emit = emit.bind(defaultBus);

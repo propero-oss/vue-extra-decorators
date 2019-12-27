@@ -1,8 +1,6 @@
-import {extend} from "@/function/extend";
-import {ExtendedFunction, ResultTransformFunction} from "@/function/extended-function";
-import {TFunction} from "@/types";
-
-
+import { extend } from "./extend";
+import { ExtendedFunction, ResultTransformFunction } from "./extended-function";
+import { TFunction } from "../types";
 
 /**
  * Transforms the result of a given function after execution.

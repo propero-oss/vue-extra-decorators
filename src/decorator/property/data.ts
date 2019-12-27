@@ -1,9 +1,6 @@
-import {Constructor, TFunction, TypedVueDecorator} from "@/types";
-import {optionsExtension} from "@/vue";
-import {isTypeLiteralOption} from "dist/main";
-import {Vue} from "vue/types/vue";
-
-
+import { TFunction, TypedPropertyDecorator } from "../../types";
+import { optionsExtension } from "../../vue";
+import { Vue } from "vue/types/vue";
 
 /**
  * Parameters of the {@link Data | @Data} decorator and its flavors
@@ -33,7 +30,6 @@ export interface DataOpts<T> {
   sync?: string;
 }
 
-
 /**
  * Declares a Vue data property.
  * @param opts - The data property options.
@@ -54,38 +50,43 @@ export interface DataOpts<T> {
  * {@link SProp} {@link NProp} {@link DProp} {@link BProp} {@link Prop}
  * @public
  */
-export function Data<T>(opts: DataOpts<T> = {}): TypedVueDecorator<T> {
-
+export function Data<T>(opts: DataOpts<T> = {}): TypedPropertyDecorator<T> {
   // If a literal is given, use a function returning that literal
-  if (opts.literal != null)
-    opts.default = (() => opts.literal) as any;
+  if (opts.literal != null) opts.default = (() => opts.literal) as any;
 
-  const {default: def, sync} = opts;
+  const { default: def, sync } = opts;
 
   // Initialize values with null so they are reactive
-  if (opts.default == null)
-    opts.default = null as any;
+  if (opts.default == null) opts.default = null as any;
 
   // Normalize value of default to function always
   if (typeof opts.default !== "function")
-    opts.default = function(this: Vue) { return def; } as any;
+    opts.default = function(this: Vue) {
+      return def;
+    } as any;
 
   const getter = opts.default as TFunction<T>;
 
-  return optionsExtension(((key, options) => {
+  return optionsExtension((key, options) => {
     const data = function(this: Vue) {
       return { [key]: getter.call(this) };
     };
     if (sync) {
-      if (!options.watch)
-        options.watch = {};
-      if (!Array.isArray(options.watch[key]))
-        options.watch[key] = options.watch[key] == null ? [] as any : [options.watch[key]];
-      (options.watch[key] as any).push({ handler(newVal: T, oldVal?: T) { this.$emit(`update:${sync}`, newVal, oldVal); }});
-      if (!Array.isArray(options.watch[sync]))
-        options.watch[sync] = options.watch[sync] == null ? [] as any : [options.watch[sync]];
-      (options.watch[sync] as any).push({ handler(newVal: T) { (this as any)[key] = newVal; }, immediate: true });
+      if (!options.watch) options.watch = {};
+      if (!Array.isArray(options.watch[key])) options.watch[key] = options.watch[key] == null ? ([] as any) : [options.watch[key]];
+      (options.watch[key] as any).push({
+        handler(newVal: T, oldVal?: T) {
+          this.$emit(`update:${sync}`, newVal, oldVal);
+        }
+      });
+      if (!Array.isArray(options.watch[sync])) options.watch[sync] = options.watch[sync] == null ? ([] as any) : [options.watch[sync]];
+      (options.watch[sync] as any).push({
+        handler(newVal: T) {
+          (this as any)[key] = newVal;
+        },
+        immediate: true
+      });
     }
     return { data };
-  }));
+  });
 }

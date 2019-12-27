@@ -1,0 +1,7 @@
+{
+  "extends": "@istanbuljs/nyc-config-typescript",
+  "all": true,
+  "reporter": "lcovonly",
+  "report-dir": "coverage",
+  "clean": true
+}

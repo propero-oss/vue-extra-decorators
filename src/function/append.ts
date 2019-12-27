@@ -1,8 +1,6 @@
-import {extend} from "@/function/extend";
-import {AfterFunction, ExtendedFunction} from "@/function/extended-function";
-import {TFunction} from "@/types";
-
-
+import { extend } from "./extend";
+import { AfterFunction, ExtendedFunction } from "./extended-function";
+import { TFunction } from "../types";
 
 /**
  * Append a function to another, so it gets called after the original has been called.
@@ -16,4 +14,3 @@ export function append<T extends TFunction>(fn: T | undefined, ext: AfterFunctio
   efn.__after.unshift(ext);
   return efn;
 }
-

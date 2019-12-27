@@ -1,6 +1,4 @@
-import {lookup} from "@/util";
-
-
+import { lookup } from "../../util";
 
 /**
  * Create a predicate that checks if the first parameter

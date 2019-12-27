@@ -1,4 +1,5 @@
 export * from "./handler";
+export * from "./properties";
 export * from "./router";
 export * from "./calculated-prop";
 export * from "./ensure-option-member";

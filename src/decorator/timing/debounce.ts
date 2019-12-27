@@ -1,7 +1,5 @@
-import {wrapFunction} from "@/descriptor";
-import {TFunction} from "@/types";
-
-
+import { wrapFunction } from "../../descriptor";
+import { AnyFunction } from "../../types";
 
 /**
  * Debounce function calls by a specified amount of time
@@ -36,12 +34,11 @@ import {TFunction} from "@/types";
  * @public
  */
 export function Debounce(ms: number = 200) {
-  return (target: any, key: string, desc: TypedPropertyDescriptor<TFunction>) => {
+  return (target: any, key: string, desc: TypedPropertyDescriptor<AnyFunction>) => {
     const timeout = Symbol(`debounce:${key}`);
 
-    wrapFunction(desc, function({args, orig}) {
-      if (this[timeout] != null)
-        clearTimeout(this[timeout]);
+    wrapFunction(desc, function({ args, orig }) {
+      if (this[timeout] != null) clearTimeout(this[timeout]);
       this[timeout] = setTimeout(() => {
         delete this[timeout];
         orig.apply(this, args);

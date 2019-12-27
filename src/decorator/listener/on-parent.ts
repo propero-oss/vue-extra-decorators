@@ -1,6 +1,4 @@
-import {createListenerDecorator} from "@/vue/handler/create-listener-decorator";
-
-
+import { createListenerDecorator } from "../../vue/handler/create-listener-decorator";
 
 /**
  * Registers the decorated method as a vue event listener of the parent vue component.

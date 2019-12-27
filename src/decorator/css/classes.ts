@@ -1,7 +1,5 @@
-import {CalculatedPropertyDescriptor, wrapGetter} from "@/descriptor";
-import {ClassesGetter, TFunction} from "@/types";
-
-
+import { CalculatedPropertyDescriptor, wrapGetter } from "../../descriptor";
+import { ClassesGetter, TFunction } from "../../types";
 
 /**
  * Prefixes a css classes getter keys with a given
@@ -46,7 +44,7 @@ import {ClassesGetter, TFunction} from "@/types";
 export function Classes(
   prefix?: string,
   infix: string = "",
-  converter: TFunction<string, [string | [string, string], boolean]> = s => typeof s === "string" ? s : s.join("")
+  converter: TFunction<string, [string | [string, string], boolean]> = s => (typeof s === "string" ? s : s.join(""))
 ) {
   return <T>(target: any, key: string, desc: CalculatedPropertyDescriptor<ClassesGetter<T>>) => {
     if (prefix == null) prefix = converter(target.constructor ? target.constructor.name : target.name, false);
@@ -55,10 +53,8 @@ export function Classes(
       const result: Record<string, boolean> = {};
       if (prefix) result[prefix] = true;
       for (const [key, value] of Object.entries(val))
-        if (typeof value === "string")
-          result[prefix + infix + converter([key, value], true)] = true;
-        else
-          result[prefix + infix + converter(key, true)] = value;
+        if (typeof value === "string") result[prefix + infix + converter([key, value], true)] = true;
+        else result[prefix + infix + converter(key, true)] = value;
       return result;
     });
   };
@@ -72,11 +68,7 @@ export function Classes(
  * {@link Classes} {@link ClassesCamel} {@link ClassesKebap} {@link ClassesPascal} {@link ClassesSnake}
  * @public
  */
-export function composeConverter(
-  className: TFunction<string, [string]>,
-  memberName: TFunction<string, [string]>
-) {
-  return (name: string | [string, string], member: boolean) => member
-    ? memberName(Array.isArray(name) ? name[0] + name[1][0].toUpperCase() + name[1].substr(1) : name)
-    : className(name as string);
+export function composeConverter(className: TFunction<string, [string]>, memberName: TFunction<string, [string]>) {
+  return (name: string | [string, string], member: boolean) =>
+    member ? memberName(Array.isArray(name) ? name[0] + name[1][0].toUpperCase() + name[1].substr(1) : name) : className(name as string);
 }

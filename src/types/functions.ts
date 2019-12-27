@@ -1,6 +1,3 @@
-
-
-
 /**
  * The type of a function.
  * Can be parameterized with a return type, argument types and a context (this) type.
@@ -29,7 +26,6 @@ export type NoArgsFunction<RETURN = any> = TFunction<RETURN, []>;
  */
 export type SingleArgFunction<RETURN = any, ARG = any> = TFunction<RETURN, [ARG]>;
 
-
 /**
  * The type of a function returning any.
  * Can be parameterized with argument types and a context (this) type.
@@ -44,24 +40,24 @@ export type AnyFunction<ARGS extends unknown[] = any[], THIS = any> = TFunction<
  */
 export type VoidFunction<ARGS extends unknown[] = any[], THIS = any> = TFunction<any, ARGS, void>;
 
-
 /**
  * Changes the return type of a given function type parameter
  * @internal
  */
-export type FunctionReturning<RETURN = any, BASE extends TFunction = any>
-  = TFunction<RETURN, Parameters<BASE>, ThisParameterType<BASE>>;
+export type FunctionReturning<RETURN = any, BASE extends TFunction = any> = TFunction<RETURN, Parameters<BASE>, ThisParameterType<BASE>>;
 
 /**
  * Changes the context (this) type of a given function type parameter
  * @internal
  */
-export type FunctionWithContext<THIS = any, BASE extends TFunction = any>
-  = TFunction<ReturnType<BASE>, Parameters<BASE>, THIS>;
+export type FunctionWithContext<THIS = any, BASE extends TFunction = any> = TFunction<ReturnType<BASE>, Parameters<BASE>, THIS>;
 
 /**
  * Changes the parameter types of a given function type parameter
  * @internal
  */
-export type FunctionWithParams<ARGS extends unknown[] = any[], BASE extends TFunction = any>
-  = TFunction<ReturnType<BASE>, ARGS, ThisParameterType<BASE>>;
+export type FunctionWithParams<ARGS extends unknown[] = any[], BASE extends TFunction = any> = TFunction<
+  ReturnType<BASE>,
+  ARGS,
+  ThisParameterType<BASE>
+>;

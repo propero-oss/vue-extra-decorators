@@ -1,6 +1,4 @@
-import {ExtendedFunction} from "@/function/extended-function";
-
-
+import { ExtendedFunction } from "./extended-function";
 
 /**
  * Checks if a given function is an {@link ExtendedFunction}.

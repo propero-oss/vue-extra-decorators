@@ -1,6 +1,3 @@
-
-
-
 /**
  * gets or creates a member of vue component options
  * @param options - The vue component options to modify
@@ -14,5 +11,5 @@ export function ensureOptionMember<T, K extends keyof T>(
   member: K,
   defaultVal: NonNullable<T[K]> = {} as any
 ): NonNullable<T[K]> {
-  return options[member] as NonNullable<T[K]> || (options[member] = defaultVal) as NonNullable<T[K]>;
+  return (options[member] as NonNullable<T[K]>) || ((options[member] = defaultVal) as NonNullable<T[K]>);
 }

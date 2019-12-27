@@ -1,8 +1,6 @@
-import {wrapFunction} from "@/descriptor";
-import {TFunction} from "@/types";
-import {callbackToPromise} from "@/util";
-
-
+import { wrapFunction } from "../../descriptor";
+import { AnyFunction } from "../../types";
+import { callbackToPromise } from "../../util";
 
 /**
  * Delay function calls by a single browser frame.
@@ -31,8 +29,8 @@ import {callbackToPromise} from "@/util";
  * @public
  */
 export function NextFrame() {
-  return (target: any, key: string, desc: TypedPropertyDescriptor<TFunction>) => {
-    wrapFunction(desc, function({args, orig}) {
+  return (target: any, key: string, desc: TypedPropertyDescriptor<AnyFunction>) => {
+    wrapFunction(desc, function({ args, orig }) {
       return callbackToPromise(requestAnimationFrame, orig.bind(this, ...args));
     });
   };

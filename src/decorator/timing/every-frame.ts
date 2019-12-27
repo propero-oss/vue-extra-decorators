@@ -1,7 +1,5 @@
-import {TFunction} from "@/types";
-import {withSideEffects} from "@/vue/with-side-effects";
-
-
+import { AnyFunction } from "../../types";
+import { withSideEffects } from "../../vue/with-side-effects";
 
 /**
  * Calls a function every animation frame.
@@ -31,12 +29,12 @@ import {withSideEffects} from "@/vue/with-side-effects";
  * @public
  */
 export function EveryFrame() {
-  return (target: any, key: string, desc: TypedPropertyDescriptor<TFunction>) => {
+  return (target: any, key: string, desc: TypedPropertyDescriptor<AnyFunction>) => {
     const id = Symbol(`frame:${key}`);
 
     function scheduler(cxt: any, key: string) {
-      cxt[id] = requestAnimationFrame(() => {
-        cxt[key].call(cxt);
+      cxt[id] = requestAnimationFrame(async () => {
+        await cxt[key].call(cxt);
         scheduler(cxt, key);
       });
     }

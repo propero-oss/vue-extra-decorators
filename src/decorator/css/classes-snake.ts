@@ -1,10 +1,7 @@
-import {Classes, composeConverter} from "@/decorator/css/classes";
-import {pascalToSnake} from "@/util";
-
-
+import { Classes, composeConverter } from "./classes";
+import { pascalToSnake } from "../../util";
 
 const converter = composeConverter(pascalToSnake, pascalToSnake);
-
 
 /**
  * Snake case specific flavor of {@link Classes} decorator.

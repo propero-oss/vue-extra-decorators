@@ -1,6 +1,3 @@
-
-
-
 /**
  * Converts a camelCased name to kebap-case.
  * @param str - The string to convert

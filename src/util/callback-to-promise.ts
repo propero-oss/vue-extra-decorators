@@ -1,6 +1,4 @@
-import {TFunction, VoidFunction} from "@/types";
-
-
+import { TFunction, VoidFunction } from "../types";
 
 /**
  * Returns a promise for the execution of a callback based function.
@@ -11,7 +9,8 @@ import {TFunction, VoidFunction} from "@/types";
  */
 export function callbackToPromise<T extends TFunction>(
   callbackFn: VoidFunction<[TFunction, ...any[]]>,
-  fn: T, ...args: any[]
+  fn: T,
+  ...args: any[]
 ): Promise<ReturnType<T>> {
   return resolveCallback(callbackFn, ...args).then(() => fn());
 }

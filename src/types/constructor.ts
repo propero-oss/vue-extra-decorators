@@ -1,6 +1,3 @@
-
-
-
 /**
  * A constructor function
  * it can be parameterized with a type to construct and parameter types

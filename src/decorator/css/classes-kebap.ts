@@ -1,10 +1,7 @@
-import {Classes, composeConverter} from "@/decorator/css/classes";
-import {pascalToKebap} from "@/util";
-
-
+import { Classes, composeConverter } from "./classes";
+import { pascalToKebap } from "../../util";
 
 const converter = composeConverter(pascalToKebap, pascalToKebap);
-
 
 /**
  * Kebap case specific flavor of {@link Classes} decorator.

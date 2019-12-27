@@ -1,12 +1,12 @@
-import {TypedVueDecorator} from "@/types";
-import {calculatedProp} from "@/vue";
-import {Vue} from "vue/types/vue";
-
-
+import { TypedPropertyDecorator } from "../../types";
+import { calculatedProp } from "../../vue";
+import { Vue } from "vue/types/vue";
 
 export interface RouteParamOptions<T> {
   default?: T | ((this: Vue) => T);
   literal?: T;
+  parser?: (val?: string) => T;
+  serializer?: (val?: T) => string | undefined;
 }
 
 /**
@@ -41,14 +41,18 @@ export interface RouteParamOptions<T> {
  * {@link RouteParam} {@link RouteQuery} {@link RouteName} {@link Route}
  * @public
  */
-export function RouteParam(name: string, props: RouteParamOptions<any> = {}): TypedVueDecorator<any> {
+export function RouteParam(name: string, props: RouteParamOptions<any> = {}): TypedPropertyDecorator<string | undefined> {
   const value = props.literal != null ? () => props.literal : typeof props.default === "function" ? props.default : () => props.default;
-  return calculatedProp<string>(
-    function() {
-      if (this.$route == null || this.$route.params[name] == null)
-        return value ? value.call(this) : undefined;
+  return calculatedProp<string | undefined>(
+    function(this: any) {
+      if (this.$route == null || this.$route.params[name] == null) return value ? value.call(this) : undefined;
+      if (props.parser) return props.parser(this.$route.params[name]);
       return this.$route.params[name];
     },
-    function(value) { this.$router.replace({ ...this.$route, params: { ...this.$route.params, [name]: value } }); }
+    function(this: any, value) {
+      const serialized = props.serializer ? props.serializer(value) : value;
+      if (!this.$route || this.$route.params[name] !== serialized)
+        this.$router.replace({ ...this.$route, params: { ...this.$route.params, [name]: serialized } });
+    }
   );
 }

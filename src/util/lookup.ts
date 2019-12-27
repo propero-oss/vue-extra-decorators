@@ -1,6 +1,3 @@
-
-
-
 /**
  * Looks up a json path inside a given object.
  * @param source - The object to look up
