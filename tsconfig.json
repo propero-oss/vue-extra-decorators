@@ -15,7 +15,6 @@
     "outDir": "lib",
     "declaration": true,
     "types": [
-      "webpack-env",
       "jest"
     ],
     "lib": [

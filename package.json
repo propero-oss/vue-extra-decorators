@@ -11,11 +11,12 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "npm run build:umd && npm run build:cjs && npm run build:esm && npm run build:unpkg && npm run build:dts",
+    "build": "npm run build:umd && npm run build:cjs && npm run build:esm && npm run build:unpkg && npm run build:fix-dts && npm run build:dts",
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/VueExtraDecorators.js",
     "build:cjs": "rollup --config build/rollup.config.js --format cjs --file dist/VueExtraDecorators.cjs.js",
     "build:esm": "rollup --config build/rollup.config.js --format esm --file dist/VueExtraDecorators.esm.js",
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/VueExtraDecorators.iife.js",
+    "build:fix-dts": "node build/fix-types.js",
     "build:dts": "api-extractor run --local",
     "docs": "api-documenter markdown -i dist -o docs",
     "test:unit": "vue-cli-service test:unit",

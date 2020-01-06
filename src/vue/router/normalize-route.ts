@@ -1,5 +1,5 @@
+import { Constructor } from "../../types";
 import { RouteConfig } from "./routes";
-import { VueClass } from "vue-class-component/lib/declarations";
 import { Vue } from "vue/types/vue";
 
 /**
@@ -9,7 +9,7 @@ import { Vue } from "vue/types/vue";
  * @returns the normalized config.
  * @internal
  */
-export function normalizeRoute(it: Partial<RouteConfig> | string | undefined, target: VueClass<Vue>): RouteConfig {
+export function normalizeRoute(it: Partial<RouteConfig> | string | undefined, target: Constructor<Vue | any>): RouteConfig {
   // No route => assume class name
   if (it == null)
     it = {
