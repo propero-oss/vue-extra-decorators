@@ -38,6 +38,9 @@
     "typescript"
   ],
   "author": "Propero Team <team@propero.dev>",
+  "contributors": [
+    "Merlin Reichwald <merlin.reichwald@gmail.com"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@microsoft/api-documenter": "^7.7.2",
